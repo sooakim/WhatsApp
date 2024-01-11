@@ -98,6 +98,8 @@
 		5870521D2B503C1D00E08A89 /* whatsapp */ = {
 			isa = PBXGroup;
 			children = (
+				5870524E2B50402800E08A89 /* Component */,
+				5870524D2B50401E00E08A89 /* Screen */,
 				5870521E2B503C1D00E08A89 /* whatsappApp.swift */,
 				587052202B503C1D00E08A89 /* ContentView.swift */,
 				587052222B503C2100E08A89 /* Assets.xcassets */,
@@ -131,6 +133,20 @@
 				587052402B503C2200E08A89 /* whatsappUITestsLaunchTests.swift */,
 			);
 			path = whatsappUITests;
+			sourceTree = "<group>";
+		};
+		5870524D2B50401E00E08A89 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5870524E2B50402800E08A89 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,8 +452,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,8 +481,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
