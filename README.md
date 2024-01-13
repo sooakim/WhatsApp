@@ -1,4 +1,4 @@
-# WhatApp Project
+# WhatsApp Project
 
 |Welcome|Chat|
 |--|--|
