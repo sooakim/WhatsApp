@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE252B52C07700649628 /* Font+NanumGothic.swift */; };
+		584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE282B52C57B00649628 /* NanumGothicBold.otf */; };
+		584BBE2D2B52C57B00649628 /* NanumGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE292B52C57B00649628 /* NanumGothic.otf */; };
+		584BBE2E2B52C57B00649628 /* NanumGothicExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE2A2B52C57B00649628 /* NanumGothicExtraBold.otf */; };
+		584BBE2F2B52C57B00649628 /* NanumGothicLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE2B2B52C57B00649628 /* NanumGothicLight.otf */; };
+		584BBE312B52CD1F00649628 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE302B52CD1F00649628 /* Calendar.swift */; };
+		584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE322B52D19000649628 /* UnreadMessageBubble.swift */; };
+		584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE352B52D1C800649628 /* MessageListScreen.swift */; };
+		584BBE3C2B52D43900649628 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE3B2B52D43900649628 /* EdgeInsets.swift */; };
+		584BBE3F2B52D99700649628 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE3E2B52D99700649628 /* HomeScreen.swift */; };
 		5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870521E2B503C1D00E08A89 /* whatsappApp.swift */; };
 		587052212B503C1D00E08A89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052202B503C1D00E08A89 /* ContentView.swift */; };
 		587052232B503C2100E08A89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587052222B503C2100E08A89 /* Assets.xcassets */; };
@@ -38,6 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		584BBE252B52C07700649628 /* Font+NanumGothic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+NanumGothic.swift"; sourceTree = "<group>"; };
+		584BBE282B52C57B00649628 /* NanumGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicBold.otf; sourceTree = "<group>"; };
+		584BBE292B52C57B00649628 /* NanumGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothic.otf; sourceTree = "<group>"; };
+		584BBE2A2B52C57B00649628 /* NanumGothicExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicExtraBold.otf; sourceTree = "<group>"; };
+		584BBE2B2B52C57B00649628 /* NanumGothicLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicLight.otf; sourceTree = "<group>"; };
+		584BBE302B52CD1F00649628 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		584BBE322B52D19000649628 /* UnreadMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadMessageBubble.swift; sourceTree = "<group>"; };
+		584BBE352B52D1C800649628 /* MessageListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListScreen.swift; sourceTree = "<group>"; };
+		584BBE3B2B52D43900649628 /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
+		584BBE3E2B52D99700649628 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		5870521B2B503C1D00E08A89 /* whatsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5870521E2B503C1D00E08A89 /* whatsappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappApp.swift; sourceTree = "<group>"; };
 		587052202B503C1D00E08A89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +99,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		584BBDFA2B52BE6B00649628 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				587052242B503C2100E08A89 /* Preview Content */,
+				584BBE272B52C57B00649628 /* NanumFontSetup_OTF_GOTHIC */,
+				587052222B503C2100E08A89 /* Assets.xcassets */,
+				587052292B503C2100E08A89 /* whatsapp.xcdatamodeld */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		584BBE232B52C06200649628 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE242B52C06A00649628 /* Extension */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		584BBE242B52C06A00649628 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE252B52C07700649628 /* Font+NanumGothic.swift */,
+				584BBE302B52CD1F00649628 /* Calendar.swift */,
+				584BBE3B2B52D43900649628 /* EdgeInsets.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		584BBE272B52C57B00649628 /* NanumFontSetup_OTF_GOTHIC */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE282B52C57B00649628 /* NanumGothicBold.otf */,
+				584BBE292B52C57B00649628 /* NanumGothic.otf */,
+				584BBE2A2B52C57B00649628 /* NanumGothicExtraBold.otf */,
+				584BBE2B2B52C57B00649628 /* NanumGothicLight.otf */,
+			);
+			path = NanumFontSetup_OTF_GOTHIC;
+			sourceTree = "<group>";
+		};
+		584BBE342B52D1BC00649628 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE3D2B52D98E00649628 /* Home */,
+				584BBE372B52D20700649628 /* MessageList */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		584BBE372B52D20700649628 /* MessageList */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE352B52D1C800649628 /* MessageListScreen.swift */,
+			);
+			path = MessageList;
+			sourceTree = "<group>";
+		};
+		584BBE3D2B52D98E00649628 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE3E2B52D99700649628 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		587052122B503C1C00E08A89 = {
 			isa = PBXGroup;
 			children = (
@@ -102,14 +187,13 @@
 		5870521D2B503C1D00E08A89 /* whatsapp */ = {
 			isa = PBXGroup;
 			children = (
+				584BBE342B52D1BC00649628 /* Screen */,
+				584BBE232B52C06200649628 /* Util */,
+				584BBDFA2B52BE6B00649628 /* Resource */,
 				5870524E2B50402800E08A89 /* Component */,
-				5870524D2B50401E00E08A89 /* Screen */,
 				5870521E2B503C1D00E08A89 /* whatsappApp.swift */,
 				587052202B503C1D00E08A89 /* ContentView.swift */,
-				587052222B503C2100E08A89 /* Assets.xcassets */,
 				587052272B503C2100E08A89 /* Persistence.swift */,
-				587052292B503C2100E08A89 /* whatsapp.xcdatamodeld */,
-				587052242B503C2100E08A89 /* Preview Content */,
 			);
 			path = whatsapp;
 			sourceTree = "<group>";
@@ -139,13 +223,6 @@
 			path = whatsappUITests;
 			sourceTree = "<group>";
 		};
-		5870524D2B50401E00E08A89 /* Screen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screen;
-			sourceTree = "<group>";
-		};
 		5870524E2B50402800E08A89 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				587052502B50409900E08A89 /* MessageListItem.swift */,
+				584BBE322B52D19000649628 /* UnreadMessageBubble.swift */,
 			);
 			path = MessageListItem;
 			sourceTree = "<group>";
@@ -275,8 +353,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */,
 				587052262B503C2100E08A89 /* Preview Assets.xcassets in Resources */,
+				584BBE2F2B52C57B00649628 /* NanumGothicLight.otf in Resources */,
 				587052232B503C2100E08A89 /* Assets.xcassets in Resources */,
+				584BBE2E2B52C57B00649628 /* NanumGothicExtraBold.otf in Resources */,
+				584BBE2D2B52C57B00649628 /* NanumGothic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +383,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */,
 				587052282B503C2100E08A89 /* Persistence.swift in Sources */,
 				5870522B2B503C2100E08A89 /* whatsapp.xcdatamodeld in Sources */,
+				584BBE3C2B52D43900649628 /* EdgeInsets.swift in Sources */,
+				584BBE312B52CD1F00649628 /* Calendar.swift in Sources */,
 				587052212B503C1D00E08A89 /* ContentView.swift in Sources */,
+				584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */,
+				584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */,
+				584BBE3F2B52D99700649628 /* HomeScreen.swift in Sources */,
 				5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */,
 				587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */,
 				587052512B50409900E08A89 /* MessageListItem.swift in Sources */,
@@ -466,10 +554,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = keyColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"whatsapp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"whatsapp/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -495,10 +583,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = keyColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"whatsapp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"whatsapp/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
