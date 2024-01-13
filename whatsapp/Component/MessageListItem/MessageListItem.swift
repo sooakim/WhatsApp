@@ -37,17 +37,17 @@ struct MessageListItem: View{
             }.frame(width: Metrics.profileSize, height: Metrics.profileSize)
             
             VStack(alignment: .leading, spacing: 0){
-                Text(message.senderName)
-                    .font(Font.custom(.bold, size: 16))
+                Text(styleable: message.senderName.lineHeight(24))
+                    .font(.custom(.bold, size: 16))
                     .foregroundStyle(Color.black100)
-                Text(message.lastMessage)
-                    .font(Font.custom(.regular, size: 14))
+                Text(styleable: message.lastMessage.lineHeight(16.41))
+                    .font(.custom(.regular, size: 14))
                     .foregroundStyle(Color.black100)
             }.frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .trailing, spacing: 0){
-                Text(message.lastMessageSentAt.asRelativeDateTime())
-                    .font(Font.custom(.regular, size: 14))
+                Text(styleable: message.lastMessageSentAt.asRelativeDateTime().lineHeight(16.41))
+                    .font(.custom(.regular, size: 14))
                     .foregroundStyle(Color.black100)
                 
                 if message.unreadMessageCount > 0{

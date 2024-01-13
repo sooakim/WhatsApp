@@ -14,9 +14,13 @@ struct UnreadMessageBubble: View{
     var body: some View{
         ZStack(alignment: .center){
             Circle().fill(Color.key)
-            Text("\(count)")
+            Text(styleable: "\(count)".lineHeight(16.41))
                 .font(Font.custom(.regular, size: 14))
                 .foregroundStyle(Color.white100)
         }.frame(width: 22, height: 22)
     }
+}
+
+#Preview{
+    UnreadMessageBubble(count: 2)
 }
