@@ -106,23 +106,23 @@ private struct InputAccessoryView: View{
                 Image(.Icon.attachment)
                     .foregroundStyle(Color.gray80)
             })
-            ZStack{
-                RoundedRectangle(cornerRadius: Metrics.messageInputRadius, style: .continuous)
-                    .fill(Color.grayf2)
-                HStack(alignment: .center, spacing: 6){
-                    TextField(text: $messageInput) {
-                        Text("Message")
-                    }
-                    .foregroundStyle(Color.grayC5)
-                    
-                    Button(action: {
-                        didTapEmoji?()
-                    }, label: {
-                        Image(.Icon.emoji)
-                            .foregroundStyle(Color.gray80)
-                    })
-                }.padding(EdgeInsets(top: 6, leading: 13, bottom: 6, trailing: 6))
-            }.frame(height: 33)
+            HStack(alignment: .center, spacing: 6){
+                TextField(text: $messageInput) {
+                    Text("Message")
+                }
+                .foregroundStyle(Color.grayC5)
+                
+                Button(action: {
+                    didTapEmoji?()
+                }, label: {
+                    Image(.Icon.emoji)
+                        .foregroundStyle(Color.gray80)
+                })
+            }
+            .padding(EdgeInsets(top: 6, leading: 13, bottom: 6, trailing: 6))
+            .background(Color.grayf2)
+            .clipShape(RoundedRectangle(cornerRadius: Metrics.messageInputRadius, style: .continuous))
+            .frame(height: 33)
             Button(action: {
                 didTapMicrophone?()
             }, label: {

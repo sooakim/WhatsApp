@@ -32,9 +32,6 @@ struct MessageFromUserItem: View{
         HStack{
             Spacer()
             ZStack{
-                RoundedRectangle(cornerRadius: Metrics.messageRadius, style: .continuous)
-                    .fill(Color.key)
-                
                 if messageSize.width == 275{
                     VStack(alignment: .trailing, spacing: 4){
                         messageBody()
@@ -42,12 +39,18 @@ struct MessageFromUserItem: View{
                         
                         infoBody()
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 11))
-                    }.padding(EdgeInsets(top: 11, leading: 15, bottom: 6, trailing: 0))
+                    }
+                    .padding(EdgeInsets(top: 11, leading: 15, bottom: 6, trailing: 0))
+                    .background(Color.key)
+                    .clipShape(RoundedCorner(cornerRadii: RectangleCornerRadii(topLeading: Metrics.messageRadius, bottomLeading: Metrics.messageRadius, bottomTrailing: 0, topTrailing: Metrics.messageRadius)))
                 }else{
                     HStack(spacing: 12){
                         messageBody()
                         infoBody()
-                    }.padding(EdgeInsets(top: 11, leading: 15, bottom: 6, trailing: 11))
+                    }
+                    .padding(EdgeInsets(top: 11, leading: 15, bottom: 6, trailing: 11))
+                    .background(Color.key)
+                    .clipShape(RoundedRectangle(cornerRadius: Metrics.messageRadius, style: .continuous))
                 }
             }
             .frame(maxWidth: 275)

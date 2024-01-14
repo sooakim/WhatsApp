@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583437B72B53AA840081B092 /* RoundedCorner.swift */; };
 		584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE252B52C07700649628 /* Font+NanumGothic.swift */; };
 		584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE282B52C57B00649628 /* NanumGothicBold.otf */; };
 		584BBE2D2B52C57B00649628 /* NanumGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE292B52C57B00649628 /* NanumGothic.otf */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		583437B72B53AA840081B092 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		584BBE252B52C07700649628 /* Font+NanumGothic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+NanumGothic.swift"; sourceTree = "<group>"; };
 		584BBE282B52C57B00649628 /* NanumGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicBold.otf; sourceTree = "<group>"; };
 		584BBE292B52C57B00649628 /* NanumGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothic.otf; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		583437B62B53AA7B0081B092 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				583437B72B53AA840081B092 /* RoundedCorner.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
 		584BBDFA2B52BE6B00649628 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +315,7 @@
 		5870524E2B50402800E08A89 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				583437B62B53AA7B0081B092 /* Shape */,
 				584BBE572B5320BA00649628 /* MessageDateItem */,
 				584BBE562B5320B200649628 /* MessageFromOtherItem */,
 				584BBE532B53208200649628 /* MessageFromUserItem */,
@@ -490,6 +501,7 @@
 				587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */,
 				584BBE432B52E04C00649628 /* StringStyleable.swift in Sources */,
 				584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */,
+				583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */,
 				587052512B50409900E08A89 /* MessageListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

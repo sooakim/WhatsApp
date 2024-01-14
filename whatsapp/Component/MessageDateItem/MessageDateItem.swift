@@ -17,7 +17,7 @@ struct MessageDateItem: View{
                 .padding(EdgeInsets(vertical: 6, horizontal: 24))
                 .background(Color.grayf2)
                 .clipShape(RoundedRectangle(cornerRadius: Metrics.dateRadius, style: .continuous))
-        }.padding(EdgeInsets(vertical: 20))
+        }.padding(EdgeInsets(vertical: 20)).frame(maxWidth: .infinity)
     }
 }
 
