@@ -110,6 +110,8 @@ private struct InputAccessoryView: View{
                 TextField(text: $messageInput) {
                     Text("Message")
                 }
+                .lineLimit(nil)
+                .font(.custom(.regular, size: 14))
                 .foregroundStyle(Color.grayC5)
                 
                 Button(action: {
@@ -122,7 +124,6 @@ private struct InputAccessoryView: View{
             .padding(EdgeInsets(top: 6, leading: 13, bottom: 6, trailing: 6))
             .background(Color.grayf2)
             .clipShape(RoundedRectangle(cornerRadius: Metrics.messageInputRadius, style: .continuous))
-            .frame(height: 33)
             Button(action: {
                 didTapMicrophone?()
             }, label: {
