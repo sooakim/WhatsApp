@@ -10,18 +10,13 @@ import SwiftUI
 
 struct MessageDateItem: View{
     var body: some View{
-        HStack{
-            Spacer().frame(width: .infinity)
-            ZStack{
-                // FIXME: RoundedRectangle과 Text의 사이즈가 같아야함
-                RoundedRectangle(cornerRadius: Metrics.dateRadius, style: .continuous)
-                    .fill(Color.grayf2)
-                Text(styleable: "Today".lineHeight(17.61))
-                    .font(.custom(.regular, size: 14))
-                    .foregroundStyle(Color.black100)
-                    .padding(EdgeInsets(vertical: 6, horizontal: 24))
-            }
-            Spacer().frame(width: .infinity)
+        VStack(alignment: .center){
+            Text(styleable: "Today".lineHeight(17.61))
+                .font(.custom(.regular, size: 14))
+                .foregroundStyle(Color.black100)
+                .padding(EdgeInsets(vertical: 6, horizontal: 24))
+                .background(Color.grayf2)
+                .clipShape(RoundedRectangle(cornerRadius: Metrics.dateRadius, style: .continuous))
         }.padding(EdgeInsets(vertical: 20))
     }
 }
