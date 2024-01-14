@@ -55,6 +55,7 @@ struct MessageListItem: View{
                 }else{
                     Spacer().frame(height: 14.5)
                     Image(.Icon.messageRead)
+                        .foregroundStyle(Color.skyBlue)
                 }
             }
         }.padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 16))
@@ -95,31 +96,29 @@ private extension MessageListItem{
 }
 
 #Preview{
-    List{
-        ForEach(0..<100) { index in
-            if index % 2 == 0{
-                MessageListItem(
-                    message: Message(
-                        isActiveUser: true,
-                        senderProfileURL: URL(string: "https://placekitten.com/100/100"),
-                        senderName: "Kaiya Rhiel Madsen",
-                        lastMessage: "I need a link to the project",
-                        lastMessageSentAt: Date(),
-                        unreadMessageCount: 2
-                    )
+    List(0..<100){ index in
+        if index % 2 == 0{
+            MessageListItem(
+                message: Message(
+                    isActiveUser: true,
+                    senderProfileURL: URL(string: "https://placekitten.com/100/100"),
+                    senderName: "Kaiya Rhiel Madsen",
+                    lastMessage: "I need a link to the project",
+                    lastMessageSentAt: Date(),
+                    unreadMessageCount: 2
                 )
-            }else{
-                MessageListItem(
-                    message: Message(
-                        isActiveUser: false,
-                        senderProfileURL: URL(string: "https://placekitten.com/100/100"),
-                        senderName: "Kaiya Rhiel Madsen",
-                        lastMessage: "I need a link to the project",
-                        lastMessageSentAt: Date(),
-                        unreadMessageCount: 0
-                    )
+            )
+        }else{
+            MessageListItem(
+                message: Message(
+                    isActiveUser: false,
+                    senderProfileURL: URL(string: "https://placekitten.com/100/100"),
+                    senderName: "Kaiya Rhiel Madsen",
+                    lastMessage: "I need a link to the project",
+                    lastMessageSentAt: Date(),
+                    unreadMessageCount: 0
                 )
-            }
+            )
         }
     }
 }

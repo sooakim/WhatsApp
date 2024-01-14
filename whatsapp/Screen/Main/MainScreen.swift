@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainScreen: View{
     // MARK: - Private
-    @State private var isLoggedIn: Bool = false
+    @State private var isLoggedIn: Bool = true
     
     // MARK: - Internal
     

@@ -21,6 +21,11 @@
 		584BBE432B52E04C00649628 /* StringStyleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE422B52E04C00649628 /* StringStyleable.swift */; };
 		584BBE452B52E0E400649628 /* Text+StringStyleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE442B52E0E400649628 /* Text+StringStyleable.swift */; };
 		584BBE482B52E6CF00649628 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE472B52E6CF00649628 /* MainScreen.swift */; };
+		584BBE4C2B5308CE00649628 /* MessageDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE4B2B5308CE00649628 /* MessageDetailScreen.swift */; };
+		584BBE522B531CA000649628 /* SizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE512B531CA000649628 /* SizableView.swift */; };
+		584BBE552B53209A00649628 /* MessageFromUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE542B53209A00649628 /* MessageFromUserItem.swift */; };
+		584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE582B5320CB00649628 /* MessageDateItem.swift */; };
+		584BBE5B2B5320DA00649628 /* MessageFromOtherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE5A2B5320DA00649628 /* MessageFromOtherItem.swift */; };
 		5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870521E2B503C1D00E08A89 /* whatsappApp.swift */; };
 		587052212B503C1D00E08A89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052202B503C1D00E08A89 /* ContentView.swift */; };
 		587052232B503C2100E08A89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587052222B503C2100E08A89 /* Assets.xcassets */; };
@@ -66,6 +71,11 @@
 		584BBE422B52E04C00649628 /* StringStyleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringStyleable.swift; sourceTree = "<group>"; };
 		584BBE442B52E0E400649628 /* Text+StringStyleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+StringStyleable.swift"; sourceTree = "<group>"; };
 		584BBE472B52E6CF00649628 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		584BBE4B2B5308CE00649628 /* MessageDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailScreen.swift; sourceTree = "<group>"; };
+		584BBE512B531CA000649628 /* SizableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizableView.swift; sourceTree = "<group>"; };
+		584BBE542B53209A00649628 /* MessageFromUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFromUserItem.swift; sourceTree = "<group>"; };
+		584BBE582B5320CB00649628 /* MessageDateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDateItem.swift; sourceTree = "<group>"; };
+		584BBE5A2B5320DA00649628 /* MessageFromOtherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFromOtherItem.swift; sourceTree = "<group>"; };
 		5870521B2B503C1D00E08A89 /* whatsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5870521E2B503C1D00E08A89 /* whatsappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappApp.swift; sourceTree = "<group>"; };
 		587052202B503C1D00E08A89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -152,6 +162,7 @@
 		584BBE342B52D1BC00649628 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				584BBE4A2B5308BF00649628 /* MessageDetailScreen */,
 				584BBE492B52E6D200649628 /* WelcomeScreen */,
 				584BBE462B52E6C600649628 /* Main */,
 				584BBE3D2B52D98E00649628 /* Home */,
@@ -190,6 +201,46 @@
 				584BBE402B52DB1B00649628 /* WelcomeScreen.swift */,
 			);
 			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		584BBE4A2B5308BF00649628 /* MessageDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE4B2B5308CE00649628 /* MessageDetailScreen.swift */,
+			);
+			path = MessageDetailScreen;
+			sourceTree = "<group>";
+		};
+		584BBE502B531C9500649628 /* SizableView */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE512B531CA000649628 /* SizableView.swift */,
+			);
+			path = SizableView;
+			sourceTree = "<group>";
+		};
+		584BBE532B53208200649628 /* MessageFromUserItem */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE542B53209A00649628 /* MessageFromUserItem.swift */,
+			);
+			path = MessageFromUserItem;
+			sourceTree = "<group>";
+		};
+		584BBE562B5320B200649628 /* MessageFromOtherItem */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE5A2B5320DA00649628 /* MessageFromOtherItem.swift */,
+			);
+			path = MessageFromOtherItem;
+			sourceTree = "<group>";
+		};
+		584BBE572B5320BA00649628 /* MessageDateItem */ = {
+			isa = PBXGroup;
+			children = (
+				584BBE582B5320CB00649628 /* MessageDateItem.swift */,
+			);
+			path = MessageDateItem;
 			sourceTree = "<group>";
 		};
 		587052122B503C1C00E08A89 = {
@@ -254,6 +305,10 @@
 		5870524E2B50402800E08A89 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				584BBE572B5320BA00649628 /* MessageDateItem */,
+				584BBE562B5320B200649628 /* MessageFromOtherItem */,
+				584BBE532B53208200649628 /* MessageFromUserItem */,
+				584BBE502B531C9500649628 /* SizableView */,
 				587052572B5058B800E08A89 /* CachedAsyncImage */,
 				5870524F2B50408100E08A89 /* MessageListItem */,
 			);
@@ -293,6 +348,8 @@
 			dependencies = (
 			);
 			name = whatsapp;
+			packageProductDependencies = (
+			);
 			productName = whatsapp;
 			productReference = 5870521B2B503C1D00E08A89 /* whatsapp.app */;
 			productType = "com.apple.product-type.application";
@@ -365,6 +422,8 @@
 				Base,
 			);
 			mainGroup = 587052122B503C1C00E08A89;
+			packageReferences = (
+			);
 			productRefGroup = 5870521C2B503C1D00E08A89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -414,18 +473,23 @@
 				584BBE482B52E6CF00649628 /* MainScreen.swift in Sources */,
 				584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */,
 				587052282B503C2100E08A89 /* Persistence.swift in Sources */,
+				584BBE4C2B5308CE00649628 /* MessageDetailScreen.swift in Sources */,
 				5870522B2B503C2100E08A89 /* whatsapp.xcdatamodeld in Sources */,
 				584BBE3C2B52D43900649628 /* EdgeInsets.swift in Sources */,
 				584BBE312B52CD1F00649628 /* Calendar.swift in Sources */,
 				584BBE412B52DB1B00649628 /* WelcomeScreen.swift in Sources */,
+				584BBE552B53209A00649628 /* MessageFromUserItem.swift in Sources */,
 				587052212B503C1D00E08A89 /* ContentView.swift in Sources */,
 				584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */,
 				584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */,
+				584BBE522B531CA000649628 /* SizableView.swift in Sources */,
 				584BBE452B52E0E400649628 /* Text+StringStyleable.swift in Sources */,
 				584BBE3F2B52D99700649628 /* HomeScreen.swift in Sources */,
+				584BBE5B2B5320DA00649628 /* MessageFromOtherItem.swift in Sources */,
 				5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */,
 				587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */,
 				584BBE432B52E04C00649628 /* StringStyleable.swift in Sources */,
+				584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */,
 				587052512B50409900E08A89 /* MessageListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

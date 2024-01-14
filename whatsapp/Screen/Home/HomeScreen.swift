@@ -21,10 +21,26 @@ struct HomeScreen: View{
                     Image(.Icon.tabCall)
                 }
             
-            MessageListScreen()
-                .tabItem {
-                    Image(.Icon.tabChat)
-                }
+            MessageListScreen(messages: [
+                Message(
+                    isActiveUser: true,
+                    senderProfileURL: URL(string: "https://placekitten.com/100/100"),
+                    senderName: "Kaiya Rhiel Madsen",
+                    lastMessage: "I need a link to the project",
+                    lastMessageSentAt: Date(),
+                    unreadMessageCount: 2
+                ),
+                Message(
+                    isActiveUser: false,
+                    senderProfileURL: URL(string: "https://placekitten.com/100/100"),
+                    senderName: "Kaiya Rhiel Madsen",
+                    lastMessage: "I need a link to the project",
+                    lastMessageSentAt: Date(),
+                    unreadMessageCount: 0
+                )
+            ]).tabItem {
+                Image(.Icon.tabChat)
+            }
             
             MessageListScreen()
                 .tabItem {

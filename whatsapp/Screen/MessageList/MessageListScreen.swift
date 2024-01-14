@@ -21,14 +21,19 @@ struct MessageListScreen: View{
     
     var body: some View{
         NavigationStack{
-            List{
-                ForEach(messages) { message in
-                    // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
+            List(messages){ message in
+                // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
+                ZStack{
+                    NavigationLink {
+                        MessageDetailScreen(message: message)
+                    } label: {
+                        EmptyView()
+                    }.opacity(0)
                     MessageListItem(message: message)
-                        .listRowSeparator(.visible, edges: .bottom)
-                        .listRowSeparatorTint(Color.grayE2)
-                        .listRowInsets(.zero)
                 }
+                .listRowSeparator(.visible, edges: .bottom)
+                .listRowSeparatorTint(Color.grayE2)
+                .listRowInsets(.zero)
             }
             .listStyle(.plain)
             .navigationTitle("Message")

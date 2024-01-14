@@ -20,8 +20,9 @@ extension String: StringStylable{
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = lineHeight
         
-        var container = AttributeContainer()
-        container.paragraphStyle = paragraphStyle
+        let container = AttributeContainer([
+            .paragraphStyle: paragraphStyle
+        ])
         return AttributedString(self, attributes: container)
     }
     
@@ -35,8 +36,12 @@ extension AttributedString: StringStylable{
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = lineHeight
         
+        let container = AttributeContainer([
+            .paragraphStyle: paragraphStyle
+        ])
+        
         var attributedString = self
-        attributedString.paragraphStyle = paragraphStyle
+        attributedString.mergeAttributes(container)
         return attributedString
     }
     
