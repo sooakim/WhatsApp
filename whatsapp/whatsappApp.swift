@@ -15,6 +15,7 @@ struct whatsappApp: App {
         WindowGroup {
             MainScreen()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.store, StoreEnvironment())
         }
     }
 }

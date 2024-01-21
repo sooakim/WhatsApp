@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583437B72B53AA840081B092 /* RoundedCorner.swift */; };
+		583F0AA52B5D2A8600F83B32 /* WANetworkAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 583F0AA42B5D2A8600F83B32 /* WANetworkAPI */; };
+		583F0AA82B5D2D3500F83B32 /* StoreEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */; };
 		584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE252B52C07700649628 /* Font+NanumGothic.swift */; };
 		584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE282B52C57B00649628 /* NanumGothicBold.otf */; };
 		584BBE2D2B52C57B00649628 /* NanumGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE292B52C57B00649628 /* NanumGothic.otf */; };
@@ -27,6 +29,10 @@
 		584BBE552B53209A00649628 /* MessageFromUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE542B53209A00649628 /* MessageFromUserItem.swift */; };
 		584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE582B5320CB00649628 /* MessageDateItem.swift */; };
 		584BBE5B2B5320DA00649628 /* MessageFromOtherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE5A2B5320DA00649628 /* MessageFromOtherItem.swift */; };
+		5866D92C2B5D10E500299A74 /* ChannelListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866D92B2B5D10E500299A74 /* ChannelListReducer.swift */; };
+		5866D92F2B5D110D00299A74 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5866D92E2B5D110D00299A74 /* ComposableArchitecture */; };
+		5866D9322B5D12AD00299A74 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866D9312B5D12AD00299A74 /* Channel.swift */; };
+		5866D9392B5D161B00299A74 /* WANetworkAPI in Frameworks */ = {isa = PBXBuildFile; fileRef = 5866D9382B5D161B00299A74 /* WANetworkAPI */; };
 		5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870521E2B503C1D00E08A89 /* whatsappApp.swift */; };
 		587052212B503C1D00E08A89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052202B503C1D00E08A89 /* ContentView.swift */; };
 		587052232B503C2100E08A89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587052222B503C2100E08A89 /* Assets.xcassets */; };
@@ -59,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		583437B72B53AA840081B092 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreEnvironment.swift; sourceTree = "<group>"; };
+		583F0AA92B5D308E00F83B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		584BBE252B52C07700649628 /* Font+NanumGothic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+NanumGothic.swift"; sourceTree = "<group>"; };
 		584BBE282B52C57B00649628 /* NanumGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicBold.otf; sourceTree = "<group>"; };
 		584BBE292B52C57B00649628 /* NanumGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothic.otf; sourceTree = "<group>"; };
@@ -78,6 +86,9 @@
 		584BBE542B53209A00649628 /* MessageFromUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFromUserItem.swift; sourceTree = "<group>"; };
 		584BBE582B5320CB00649628 /* MessageDateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDateItem.swift; sourceTree = "<group>"; };
 		584BBE5A2B5320DA00649628 /* MessageFromOtherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFromOtherItem.swift; sourceTree = "<group>"; };
+		5866D92B2B5D10E500299A74 /* ChannelListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListReducer.swift; sourceTree = "<group>"; };
+		5866D9312B5D12AD00299A74 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		5866D9382B5D161B00299A74 /* WANetworkAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WANetworkAPI; path = Project/WANetworkAPI; sourceTree = "<group>"; };
 		5870521B2B503C1D00E08A89 /* whatsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5870521E2B503C1D00E08A89 /* whatsappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappApp.swift; sourceTree = "<group>"; };
 		587052202B503C1D00E08A89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +110,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583F0AA52B5D2A8600F83B32 /* WANetworkAPI in Frameworks */,
+				5866D9392B5D161B00299A74 /* WANetworkAPI in Frameworks */,
+				5866D92F2B5D110D00299A74 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +139,14 @@
 				583437B72B53AA840081B092 /* RoundedCorner.swift */,
 			);
 			path = Shape;
+			sourceTree = "<group>";
+		};
+		583F0AA62B5D2D2400F83B32 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		584BBDFA2B52BE6B00649628 /* Resource */ = {
@@ -253,6 +275,39 @@
 			path = MessageDateItem;
 			sourceTree = "<group>";
 		};
+		5866D9292B5D10BC00299A74 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				5866D92A2B5D10D100299A74 /* Channel */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		5866D92A2B5D10D100299A74 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				5866D9302B5D12A500299A74 /* Model */,
+				5866D92B2B5D10E500299A74 /* ChannelListReducer.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		5866D9302B5D12A500299A74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5866D9312B5D12AD00299A74 /* Channel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5866D9372B5D161B00299A74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5866D9382B5D161B00299A74 /* WANetworkAPI */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		587052122B503C1C00E08A89 = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +315,7 @@
 				587052332B503C2200E08A89 /* whatsappTests */,
 				5870523D2B503C2200E08A89 /* whatsappUITests */,
 				5870521C2B503C1D00E08A89 /* Products */,
+				5866D9372B5D161B00299A74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +332,9 @@
 		5870521D2B503C1D00E08A89 /* whatsapp */ = {
 			isa = PBXGroup;
 			children = (
+				583F0AA92B5D308E00F83B32 /* Info.plist */,
+				583F0AA62B5D2D2400F83B32 /* Environment */,
+				5866D9292B5D10BC00299A74 /* Reducer */,
 				584BBE342B52D1BC00649628 /* Screen */,
 				584BBE232B52C06200649628 /* Util */,
 				584BBDFA2B52BE6B00649628 /* Resource */,
@@ -360,6 +419,8 @@
 			);
 			name = whatsapp;
 			packageProductDependencies = (
+				5866D92E2B5D110D00299A74 /* ComposableArchitecture */,
+				583F0AA42B5D2A8600F83B32 /* WANetworkAPI */,
 			);
 			productName = whatsapp;
 			productReference = 5870521B2B503C1D00E08A89 /* whatsapp.app */;
@@ -434,6 +495,8 @@
 			);
 			mainGroup = 587052122B503C1C00E08A89;
 			packageReferences = (
+				5866D92D2B5D110D00299A74 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				583F0AA32B5D2A8600F83B32 /* XCLocalSwiftPackageReference "Project/WANetworkAPI" */,
 			);
 			productRefGroup = 5870521C2B503C1D00E08A89 /* Products */;
 			projectDirPath = "";
@@ -482,9 +545,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				584BBE482B52E6CF00649628 /* MainScreen.swift in Sources */,
+				5866D9322B5D12AD00299A74 /* Channel.swift in Sources */,
 				584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */,
 				587052282B503C2100E08A89 /* Persistence.swift in Sources */,
 				584BBE4C2B5308CE00649628 /* MessageDetailScreen.swift in Sources */,
+				583F0AA82B5D2D3500F83B32 /* StoreEnvironment.swift in Sources */,
 				5870522B2B503C2100E08A89 /* whatsapp.xcdatamodeld in Sources */,
 				584BBE3C2B52D43900649628 /* EdgeInsets.swift in Sources */,
 				584BBE312B52CD1F00649628 /* Calendar.swift in Sources */,
@@ -499,6 +564,7 @@
 				584BBE5B2B5320DA00649628 /* MessageFromOtherItem.swift in Sources */,
 				5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */,
 				587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */,
+				5866D92C2B5D10E500299A74 /* ChannelListReducer.swift in Sources */,
 				584BBE432B52E04C00649628 /* StringStyleable.swift in Sources */,
 				584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */,
 				583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */,
@@ -669,6 +735,7 @@
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = whatsapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -698,6 +765,7 @@
 				DEVELOPMENT_TEAM = SM396Z3QTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = whatsapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -832,6 +900,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		583F0AA32B5D2A8600F83B32 /* XCLocalSwiftPackageReference "Project/WANetworkAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Project/WANetworkAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5866D92D2B5D110D00299A74 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		583F0AA42B5D2A8600F83B32 /* WANetworkAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WANetworkAPI;
+		};
+		5866D92E2B5D110D00299A74 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5866D92D2B5D110D00299A74 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		587052292B503C2100E08A89 /* whatsapp.xcdatamodeld */ = {

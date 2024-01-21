@@ -7,69 +7,54 @@
 
 import Foundation
 import SwiftUI
+import ComposableArchitecture
 
 struct MessageListScreen: View{
     // MARK: - Private
-    @State private var messages: [Message]
+    @Environment(\.store)
+    private var store: StoreEnvironment
     
     // MARK: - Internal
     var didTapCamera: (() -> Void)? = nil
     
-    init(messages: [Message] = []){
-        self._messages = State.init(wrappedValue: messages)
-    }
-    
     var body: some View{
         NavigationStack{
-            List(messages){ message in
-                // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
-                ZStack{
-                    NavigationLink {
-                        MessageDetailScreen(message: message)
-                    } label: {
-                        EmptyView()
-                    }.opacity(0)
-                    MessageListItem(message: message)
+            WithViewStore(store.channelList, observe: { $0.channels }){ viewStore in
+                List(viewStore.state){ channel in
+                    // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
+//                    ZStack{
+//                        NavigationLink {
+//                            MessageDetailScreen(message: message)
+//                        } label: {
+//                            EmptyView()
+//                        }.opacity(0)
+//                        MessageListItem(message: message)
+//                    }
+                    Text(channel.displayName)
+                    .listRowSeparator(.visible, edges: .bottom)
+                    .listRowSeparatorTint(Color.grayE2)
+                    .listRowInsets(.zero)
                 }
-                .listRowSeparator(.visible, edges: .bottom)
-                .listRowSeparatorTint(Color.grayE2)
-                .listRowInsets(.zero)
-            }
-            .listStyle(.plain)
-            .navigationTitle("Message")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarLeading) {
-                    Button(action: {
-                        didTapCamera?()
-                    }, label: {
-                        Image(.Icon.camera).tint(Color.grayB2)
-                    })
+                .listStyle(.plain)
+                .navigationTitle("Message")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItemGroup(placement: .topBarLeading) {
+                        Button(action: {
+                            didTapCamera?()
+                        }, label: {
+                            Image(.Icon.camera).tint(Color.grayB2)
+                        })
+                    }
                 }
             }
-        }
+        }.onAppear(perform: {
+            store.channelList.send(.loadAll)
+        })
     }
 }
 
 #Preview{
-    MessageListScreen(
-        messages: [
-            Message(
-                isActiveUser: true,
-                senderProfileURL: URL(string: "https://placekitten.com/100/100"),
-                senderName: "Kaiya Rhiel Madsen",
-                lastMessage: "I need a link to the project",
-                lastMessageSentAt: Date(),
-                unreadMessageCount: 2
-            ),
-            Message(
-                isActiveUser: false,
-                senderProfileURL: URL(string: "https://placekitten.com/100/100"),
-                senderName: "Kaiya Rhiel Madsen",
-                lastMessage: "I need a link to the project",
-                lastMessageSentAt: Date(),
-                unreadMessageCount: 0
-            )
-        ]
-    )
+    MessageListScreen()
+        .environment(\.store, StoreEnvironment())
 }
