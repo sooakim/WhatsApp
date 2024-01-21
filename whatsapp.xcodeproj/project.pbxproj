@@ -10,6 +10,7 @@
 		583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583437B72B53AA840081B092 /* RoundedCorner.swift */; };
 		583F0AA52B5D2A8600F83B32 /* WANetworkAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 583F0AA42B5D2A8600F83B32 /* WANetworkAPI */; };
 		583F0AA82B5D2D3500F83B32 /* StoreEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */; };
+		583F0AAD2B5D342500F83B32 /* WANetworkAPI in Resources */ = {isa = PBXBuildFile; fileRef = 583F0AAC2B5D342500F83B32 /* WANetworkAPI */; };
 		584BBE262B52C07700649628 /* Font+NanumGothic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE252B52C07700649628 /* Font+NanumGothic.swift */; };
 		584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE282B52C57B00649628 /* NanumGothicBold.otf */; };
 		584BBE2D2B52C57B00649628 /* NanumGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE292B52C57B00649628 /* NanumGothic.otf */; };
@@ -67,6 +68,7 @@
 		583437B72B53AA840081B092 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreEnvironment.swift; sourceTree = "<group>"; };
 		583F0AA92B5D308E00F83B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		583F0AAC2B5D342500F83B32 /* WANetworkAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WANetworkAPI; sourceTree = "<group>"; };
 		584BBE252B52C07700649628 /* Font+NanumGothic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+NanumGothic.swift"; sourceTree = "<group>"; };
 		584BBE282B52C57B00649628 /* NanumGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicBold.otf; sourceTree = "<group>"; };
 		584BBE292B52C57B00649628 /* NanumGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothic.otf; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 				583F0AA72B5D2D3500F83B32 /* StoreEnvironment.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		583F0AAB2B5D342500F83B32 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				583F0AAC2B5D342500F83B32 /* WANetworkAPI */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		584BBDFA2B52BE6B00649628 /* Resource */ = {
@@ -311,6 +321,7 @@
 		587052122B503C1C00E08A89 = {
 			isa = PBXGroup;
 			children = (
+				583F0AAB2B5D342500F83B32 /* Project */,
 				5870521D2B503C1D00E08A89 /* whatsapp */,
 				587052332B503C2200E08A89 /* whatsappTests */,
 				5870523D2B503C2200E08A89 /* whatsappUITests */,
@@ -514,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583F0AAD2B5D342500F83B32 /* WANetworkAPI in Resources */,
 				584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */,
 				587052262B503C2100E08A89 /* Preview Assets.xcassets in Resources */,
 				584BBE2F2B52C57B00649628 /* NanumGothicLight.otf in Resources */,
