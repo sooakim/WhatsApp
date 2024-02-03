@@ -26,9 +26,9 @@ struct ChannelListReducer{
             switch action{
             case .loadAll:
                 return .run{ send in
-                    let request = NetworkAPI.Channel.GetAllRequest()
+                    let request = NetworkAPI.Channel.GetAll.Request()
                     do{
-                        let responses: [NetworkAPI.Channel.GetAllResponse] = try await NetworkAPI.Channel.request(.getAll(request))
+                        let responses: [NetworkAPI.Channel.GetAll.Response] = try await NetworkAPI.Channel.request(.getAll(request))
                         return await send(.updateChannels(responses.map{ $0.asChannel() }))
                     }catch{
                         return await send(.error(error))

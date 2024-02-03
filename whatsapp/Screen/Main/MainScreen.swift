@@ -18,7 +18,7 @@ struct MainScreen: View{
         if isLoggedIn{
             HomeScreen()
         }else{
-            WelcomeScreen()
+            LoginScreen()
         }
     }
 }

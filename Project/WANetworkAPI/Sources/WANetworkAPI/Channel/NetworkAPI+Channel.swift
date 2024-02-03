@@ -10,7 +10,7 @@ import Moya
 
 public extension NetworkAPI{
     enum Channel: TargetType, Providable{
-        case getAll(GetAllRequest)
+        case getAll(GetAll.Request)
         
         public var baseURL: URL {
             URL(string: "http://118.67.134.127:8065/")!

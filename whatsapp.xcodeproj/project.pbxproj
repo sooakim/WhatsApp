@@ -45,6 +45,8 @@
 		587052412B503C2200E08A89 /* whatsappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052402B503C2200E08A89 /* whatsappUITestsLaunchTests.swift */; };
 		587052512B50409900E08A89 /* MessageListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052502B50409900E08A89 /* MessageListItem.swift */; };
 		587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052582B5058D200E08A89 /* CachedAsyncImage.swift */; };
+		58E434EA2B6E9E8D0099D490 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434E92B6E9E8D0099D490 /* LoginScreen.swift */; };
+		58E434ED2B6EA3A30099D490 /* UserLoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434EC2B6EA3A30099D490 /* UserLoginReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		587052402B503C2200E08A89 /* whatsappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		587052502B50409900E08A89 /* MessageListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItem.swift; sourceTree = "<group>"; };
 		587052582B5058D200E08A89 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		58E434E92B6E9E8D0099D490 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		58E434EC2B6EA3A30099D490 /* UserLoginReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginReducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,7 @@
 		584BBE342B52D1BC00649628 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				58E434E82B6E9E810099D490 /* LoginScreen */,
 				584BBE4A2B5308BF00649628 /* MessageDetailScreen */,
 				584BBE492B52E6D200649628 /* WelcomeScreen */,
 				584BBE462B52E6C600649628 /* Main */,
@@ -288,6 +293,7 @@
 		5866D9292B5D10BC00299A74 /* Reducer */ = {
 			isa = PBXGroup;
 			children = (
+				58E434EB2B6EA38E0099D490 /* UserLogin */,
 				5866D92A2B5D10D100299A74 /* Channel */,
 			);
 			path = Reducer;
@@ -411,6 +417,22 @@
 				587052582B5058D200E08A89 /* CachedAsyncImage.swift */,
 			);
 			path = CachedAsyncImage;
+			sourceTree = "<group>";
+		};
+		58E434E82B6E9E810099D490 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				58E434E92B6E9E8D0099D490 /* LoginScreen.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		58E434EB2B6EA38E0099D490 /* UserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				58E434EC2B6EA3A30099D490 /* UserLoginReducer.swift */,
+			);
+			path = UserLogin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -569,6 +591,8 @@
 				584BBE552B53209A00649628 /* MessageFromUserItem.swift in Sources */,
 				587052212B503C1D00E08A89 /* ContentView.swift in Sources */,
 				584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */,
+				58E434ED2B6EA3A30099D490 /* UserLoginReducer.swift in Sources */,
+				58E434EA2B6E9E8D0099D490 /* LoginScreen.swift in Sources */,
 				584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */,
 				584BBE522B531CA000649628 /* SizableView.swift in Sources */,
 				584BBE452B52E0E400649628 /* Text+StringStyleable.swift in Sources */,

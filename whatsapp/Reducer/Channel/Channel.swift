@@ -26,7 +26,7 @@ struct Channel: Equatable, Identifiable{
     let teamDisplayName: String
     let teamName: String
     let teamUpdatedat: Date
-    let policyId: String
+    let policyId: String?
 }
 
 extension Channel{
@@ -35,7 +35,7 @@ extension Channel{
     }
 }
 
-extension NetworkAPI.Channel.GetAllResponse{
+extension NetworkAPI.Channel.GetAll.Response{
     func asChannel() -> Channel{
         Channel(
             id: id,

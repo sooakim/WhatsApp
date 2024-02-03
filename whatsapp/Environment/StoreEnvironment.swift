@@ -24,4 +24,7 @@ struct StoreEnvironment{
     let channelList = Store(initialState: ChannelListReducer.State()) {
         ChannelListReducer()
     }
+    let login = Store(initialState: UserLoginReducer.State()) {
+        UserLoginReducer()
+    }
 }

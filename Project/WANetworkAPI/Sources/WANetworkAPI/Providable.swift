@@ -31,10 +31,22 @@ extension Providable where Self: TargetType{
             }
             let plugins: [PluginType]
             #if DEBUG
-            plugins = [NetworkLoggerPlugin()]
+            plugins = [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))]
             #endif
             
-            moyaProvider = MoyaProvider<Self>(plugins: plugins)
+            moyaProvider = MoyaProvider<Self>(requestClosure: { endpoint, closure in
+                MoyaProvider<Self>.defaultRequestMapping(for: endpoint, closure: { result in
+                    switch result{
+                    case var .success(urlRequest):
+                        urlRequest.headers = [
+                            "Authorization": "Bearer \(Keychain["token"] ?? "")"
+                        ]
+                        closure(.success(urlRequest))
+                    default:
+                        closure(result)
+                    }
+                })
+            }, plugins: plugins)
             objc_setAssociatedObject(self, &moyaProviderKey, moyaProvider, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return moyaProvider!
         }
@@ -46,6 +58,10 @@ extension Providable where Self: TargetType{
                 do{
                     switch result{
                     case let .success(response):
+                        if let token = response.response?.headers["Token"]{
+                            Keychain["token"] = token
+                        }
+                        
                         let jsonData = response.data
                         let decoded = try JSONDecoder.shared.decode(Response.self, from: jsonData)
                         continuation.resume(returning: decoded)
