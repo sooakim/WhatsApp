@@ -7,18 +7,23 @@
 
 import Foundation
 import SwiftUI
+import ComposableArchitecture
 
 struct MainScreen: View{
-    // MARK: - Private
-    @State private var isLoggedIn: Bool = true
+    @Environment(\.store)
+    var store: StoreEnvironment
     
     // MARK: - Internal
     
     var body: some View{
-        if isLoggedIn{
-            HomeScreen()
-        }else{
-            LoginScreen()
+        WithViewStore(store.main, observe: { $0.isLoggedIn }){ viewStore in
+            if viewStore.state{
+                HomeScreen()
+            }else{
+                LoginScreen()
+            }
+        }.task {
+            store.main.send(.appear)
         }
     }
 }

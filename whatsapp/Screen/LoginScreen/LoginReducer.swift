@@ -1,5 +1,5 @@
 //
-//  UserLoginReducer.swift
+//  LoginReducer.swift
 //  whatsapp
 //
 //  Created by 김수아 on 2/4/24.
@@ -10,7 +10,9 @@ import ComposableArchitecture
 import WANetworkAPI
 
 @Reducer
-struct UserLoginReducer{
+struct LoginReducer{
+    @Dependency(\.service) var service
+    
     @ObservableState
     struct State{
         var email: String = ""
@@ -29,10 +31,8 @@ struct UserLoginReducer{
             switch action{
             case .login:
                 return .run{ [state] send in
-                    let request = NetworkAPI.User.Login.Request(loginId: state.email, password: state.password)
                     do{
-                        let responses: [NetworkAPI.User.Login.Response] = try await NetworkAPI.User.request(.login(request))
-                        return
+                        try await service.loginService.requestLogin(email: state.email, password: state.password)
                     }catch{
                         return await send(.error(error))
                     }

@@ -14,7 +14,7 @@ struct LoginScreen: View{
     private var store: StoreEnvironment
     
     var body: some View{
-        @Perception.Bindable var loginStore: StoreOf<UserLoginReducer> = store.login
+        @Perception.Bindable var loginStore: StoreOf<LoginReducer> = store.login
         
         VStack(alignment: .leading, spacing: 12){
             TextField(text: $loginStore.email.sending(\.updateEmail)) {

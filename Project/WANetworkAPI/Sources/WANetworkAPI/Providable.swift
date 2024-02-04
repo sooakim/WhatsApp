@@ -60,6 +60,7 @@ extension Providable where Self: TargetType{
                     case let .success(response):
                         if let token = response.response?.headers["Token"]{
                             Keychain["token"] = token
+                            Authorization._isLoggedIn.send(true)
                         }
                         
                         let jsonData = response.data
