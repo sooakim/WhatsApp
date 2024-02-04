@@ -10,3 +10,14 @@ import Foundation
 extension JSONEncoder{
     static let shared = JSONEncoder()
 }
+
+extension JSONEncoder{
+    func encode<V: Encodable>(_ value: V) -> [String: Any]{
+        do{
+            let jsonData: Data = try Self.shared.encode(value)
+            return try JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
+        }catch{
+            return [:]
+        }
+    }
+}

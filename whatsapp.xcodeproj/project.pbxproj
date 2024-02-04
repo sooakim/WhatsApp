@@ -42,7 +42,7 @@
 		5870523F2B503C2200E08A89 /* whatsappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5870523E2B503C2200E08A89 /* whatsappUITests.swift */; };
 		587052412B503C2200E08A89 /* whatsappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052402B503C2200E08A89 /* whatsappUITestsLaunchTests.swift */; };
 		587052512B50409900E08A89 /* MessageListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052502B50409900E08A89 /* MessageListItem.swift */; };
-		587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587052582B5058D200E08A89 /* CachedAsyncImage.swift */; };
+		58B0341B2B701B980012CA0D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 58B0341A2B701B980012CA0D /* Kingfisher */; };
 		58E434EA2B6E9E8D0099D490 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434E92B6E9E8D0099D490 /* LoginScreen.swift */; };
 		58E434ED2B6EA3A30099D490 /* LoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434EC2B6EA3A30099D490 /* LoginReducer.swift */; };
 		58E434F22B6F2DD10099D490 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434F12B6F2DD10099D490 /* LoginService.swift */; };
@@ -109,7 +109,6 @@
 		5870523E2B503C2200E08A89 /* whatsappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappUITests.swift; sourceTree = "<group>"; };
 		587052402B503C2200E08A89 /* whatsappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whatsappUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		587052502B50409900E08A89 /* MessageListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItem.swift; sourceTree = "<group>"; };
-		587052582B5058D200E08A89 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		58E434E92B6E9E8D0099D490 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		58E434EC2B6EA3A30099D490 /* LoginReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReducer.swift; sourceTree = "<group>"; };
 		58E434F12B6F2DD10099D490 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B0341B2B701B980012CA0D /* Kingfisher in Frameworks */,
 				583F0AA52B5D2A8600F83B32 /* WANetworkAPI in Frameworks */,
 				5866D9392B5D161B00299A74 /* WANetworkAPI in Frameworks */,
 				5866D92F2B5D110D00299A74 /* ComposableArchitecture in Frameworks */,
@@ -385,7 +385,6 @@
 				584BBE562B5320B200649628 /* MessageFromOtherItem */,
 				584BBE532B53208200649628 /* MessageFromUserItem */,
 				584BBE502B531C9500649628 /* SizableView */,
-				587052572B5058B800E08A89 /* CachedAsyncImage */,
 				5870524F2B50408100E08A89 /* MessageListItem */,
 			);
 			path = Component;
@@ -398,14 +397,6 @@
 				584BBE322B52D19000649628 /* UnreadMessageBubble.swift */,
 			);
 			path = MessageListItem;
-			sourceTree = "<group>";
-		};
-		587052572B5058B800E08A89 /* CachedAsyncImage */ = {
-			isa = PBXGroup;
-			children = (
-				587052582B5058D200E08A89 /* CachedAsyncImage.swift */,
-			);
-			path = CachedAsyncImage;
 			sourceTree = "<group>";
 		};
 		58E434E82B6E9E810099D490 /* LoginScreen */ = {
@@ -445,6 +436,7 @@
 			packageProductDependencies = (
 				5866D92E2B5D110D00299A74 /* ComposableArchitecture */,
 				583F0AA42B5D2A8600F83B32 /* WANetworkAPI */,
+				58B0341A2B701B980012CA0D /* Kingfisher */,
 			);
 			productName = whatsapp;
 			productReference = 5870521B2B503C1D00E08A89 /* whatsapp.app */;
@@ -521,6 +513,7 @@
 			packageReferences = (
 				5866D92D2B5D110D00299A74 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				583F0AA32B5D2A8600F83B32 /* XCLocalSwiftPackageReference "Project/WANetworkAPI" */,
+				58B034192B701B980012CA0D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 5870521C2B503C1D00E08A89 /* Products */;
 			projectDirPath = "";
@@ -596,7 +589,6 @@
 				584BBE3F2B52D99700649628 /* HomeScreen.swift in Sources */,
 				584BBE5B2B5320DA00649628 /* MessageFromOtherItem.swift in Sources */,
 				5870521F2B503C1D00E08A89 /* whatsappApp.swift in Sources */,
-				587052592B5058D200E08A89 /* CachedAsyncImage.swift in Sources */,
 				584BBE432B52E04C00649628 /* StringStyleable.swift in Sources */,
 				584BBE592B5320CB00649628 /* MessageDateItem.swift in Sources */,
 				583437B82B53AA840081B092 /* RoundedCorner.swift in Sources */,
@@ -949,6 +941,14 @@
 				minimumVersion = 1.6.0;
 			};
 		};
+		58B034192B701B980012CA0D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -960,6 +960,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5866D92D2B5D110D00299A74 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		58B0341A2B701B980012CA0D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B034192B701B980012CA0D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

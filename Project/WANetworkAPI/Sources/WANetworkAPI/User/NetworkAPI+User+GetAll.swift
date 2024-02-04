@@ -2,37 +2,69 @@
 //  File.swift
 //
 //
-//  Created by 김수아 on 2/3/24.
+//  Created by 김수아 on 2/5/24.
 //
 
 import Foundation
 import MetaCodable
 
-public extension NetworkAPI.User{
-    enum Login {}
+extension NetworkAPI.User{
+    public enum GetAll {}
 }
 
-extension NetworkAPI.User.Login{
+extension NetworkAPI.User.GetAll{
     @Codable
     @MemberInit
     public struct Request{
-        @CodedAt("id")
-        public let id: String?
+        @CodedAt("page")
+        @Default(0)
+        public let page: Int
         
-        @CodedAt("login_id")
-        public let loginId: String
+        @CodedAt("per_page")
+        @Default(60)
+        public let perPage: Int
         
-        @CodedAt("token")
-        public let token: String?
+        @CodedAt("in_term")
+        public let inTerm: String?
         
-        @CodedAt("device_id")
-        public let deviceId: String?
+        @CodedAt("not_in_term")
+        public let notInTerm: String?
         
-        @CodedAt("ldap_only")
-        public let ldapOnly: Bool?
+        @CodedAt("in_channel")
+        public let inChannel: String?
         
-        @CodedAt("password")
-        public let password: String
+        @CodedAt("not_in_channel")
+        public let notInChannel: String?
+        
+        @CodedAt("in_group")
+        public let inGroup: String?
+        
+        @CodedAt("group_constrained")
+        public let groupConstrained: Bool?
+        
+        @CodedAt("without_team")
+        public let withoutTeam: Bool?
+        
+        @CodedAt("active")
+        public let active: Bool?
+        
+        @CodedAt("inactive")
+        public let inactive: Bool?
+        
+        @CodedAt("role")
+        public let role: String?
+        
+        @CodedAt("sort")
+        public let sort: String?
+        
+        @CodedAt("roles")
+        public let roles: String?
+        
+        @CodedAt("channel_roles")
+        public let channelRoles: String?
+        
+        @CodedAt("team_roles")
+        public let teamRoles: String?
     }
     
     @Codable
@@ -78,59 +110,58 @@ extension NetworkAPI.User.Login{
         public let locale: String
         
         @CodedAt("notify_props")
-        public let notifyProps: NotifyProps
+        public let notifyProps: NotifyProps?
         
         @CodedAt("props")
-        public let props: Props?
+        public let props: String?
         
         @CodedAt("last_password_update")
-        public let last_password_update: Int
+        public let lastPasswordUpdate: Int?
         
         @CodedAt("last_picture_update")
-        public let last_picture_update: Int?
+        public let lastPictureUpdate: Int?
         
         @CodedAt("failed_attempts")
-        public let failed_attempts: Int?
+        public let failedAttempts: Int?
         
         @CodedAt("mfa_active")
-        public let mfa_active: Bool?
+        public let mfaActive: Bool?
         
         @CodedAt("timezone")
         public let timezone: Timezone
         
         @CodedAt("terms_of_service_id")
-        public let terms_of_service_id: String?
+        public let termsOfServiceId: String?
         
         @CodedAt("terms_of_service_create_at")
-        public let terms_of_service_create_at: Int?
-        
+        public let termsOfServiceCreateAt: Int?
     }
 }
 
-extension NetworkAPI.User.Login.Response{
+extension NetworkAPI.User.GetAll.Response{
     @Codable
     @MemberInit
     public struct NotifyProps{
         @CodedAt("email")
         public let email: String
+        
         @CodedAt("push")
         public let push: String
+        
         @CodedAt("desktop")
         public let desktop: String
+        
         @CodedAt("desktop_sound")
         public let desktopSound: String
+        
         @CodedAt("mention_keys")
         public let mentionKeys: String
+        
         @CodedAt("channel")
         public let channel: String
+        
         @CodedAt("first_name")
         public let firstName: String
-    }
-    
-    @Codable
-    @MemberInit
-    public struct Props{
-        
     }
     
     @Codable

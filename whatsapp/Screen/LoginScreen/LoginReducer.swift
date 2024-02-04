@@ -34,6 +34,7 @@ struct LoginReducer{
                     do{
                         try await service.loginService.requestLogin(email: state.email, password: state.password)
                     }catch{
+                        print(error)
                         return await send(.error(error))
                     }
                 }

@@ -16,6 +16,6 @@ struct LoginService: LoginServiceable{
     
     func requestLogin(email: String, password: String) async throws {
         let request = NetworkAPI.User.Login.Request(loginId: email, password: password)
-        let _: [NetworkAPI.User.Login.Response] = try await NetworkAPI.User.request(.login(request))
+        let _: NetworkAPI.User.Login.Response = try await NetworkAPI.User.request(.login(request))
     }
 }

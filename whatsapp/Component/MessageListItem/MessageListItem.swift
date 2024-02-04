@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct Message: Identifiable{
     let id: UUID = UUID()
@@ -23,18 +24,32 @@ struct MessageListItem: View{
     
     var body: some View{
         HStack(spacing: 14){
-            AsyncImage(url: channel.senderProfileURL) { image in
-                if channel.isActiveUser {
-                    image.resizable().clipShape(Circle()).padding(3)
-                        .overlay{
-                            Circle().stroke(Color.green, lineWidth: 3)
-                        }
-                }else{
-                    image.resizable().clipShape(Circle())
-                }
-            } placeholder: {
-                Circle().fill(Color.key)
-            }.frame(width: Metrics.profileSize, height: Metrics.profileSize)
+            if channel.isActiveUser {
+                KFImage.url(channel.senderProfileURL)
+                    .placeholder{
+                        Circle().fill(Color.key)
+                    }
+                    .onFailure({ error in
+                        print(error)
+                    })
+                    .resizable()
+                    .clipShape(Circle()).padding(3)
+                    .overlay{
+                        Circle().stroke(Color.green, lineWidth: 3)
+                    }
+                    .frame(width: Metrics.profileSize, height: Metrics.profileSize)
+            }else{
+                KFImage.url(channel.senderProfileURL)
+                    .placeholder{
+                        Circle().fill(Color.key)
+                    }
+                    .onFailure({ error in
+                        print(error)
+                    })
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: Metrics.profileSize, height: Metrics.profileSize)
+            }
             
             VStack(alignment: .leading, spacing: 0){
                 Text(styleable: channel.senderName.lineHeight(24))

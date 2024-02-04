@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import WANetworkAPI
 
 struct ChannelListScreen: View{
     // MARK: - Private
@@ -37,6 +38,7 @@ struct ChannelListScreen: View{
                 .toolbar {
                     ToolbarItemGroup(placement: .topBarLeading) {
                         Button(action: {
+                            NetworkAPI.User.logout()
                             didTapCamera?()
                         }, label: {
                             Image(.Icon.camera).tint(Color.grayB2)

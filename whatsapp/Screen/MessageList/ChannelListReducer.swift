@@ -32,6 +32,7 @@ struct ChannelListReducer{
                         let channels = try await service.channelListService.requestChannels()
                         return await send(.updateChannels(channels))
                     }catch{
+                        print(error)
                         return await send(.error(error))
                     }
                 }

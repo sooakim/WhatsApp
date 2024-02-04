@@ -35,13 +35,7 @@ extension NetworkAPI.Channel{
         public var task: Moya.Task {
             switch self{
             case let .getAll(_, requestBody):
-                do{
-                    let jsonData = try JSONEncoder.shared.encode(requestBody)
-                    let parameters = try JSONSerialization.jsonObject(with: jsonData) as! [String: Any]
-                    return .requestParameters(parameters: parameters, encoding: URLEncoding())
-                }catch{
-                    return .requestPlain
-                }
+                return .requestParameters(parameters: JSONEncoder.shared.encode(requestBody), encoding: URLEncoding())
             }
         }
         

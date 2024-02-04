@@ -26,6 +26,7 @@ struct MainReducer{
         Reduce{ state, action in
             switch action{
             case .appear:
+                state.isLoggedIn = NetworkAPI.User.isLoggedIn
                 return .run{ send in
                     for await isLoggedIn in isLoggedIn(){
                         switch isLoggedIn{

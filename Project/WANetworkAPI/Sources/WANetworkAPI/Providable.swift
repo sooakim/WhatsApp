@@ -30,9 +30,9 @@ extension Providable where Self: TargetType{
                 return moyaProvider
             }
             let plugins: [PluginType]
-            #if DEBUG
+#if DEBUG
             plugins = [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))]
-            #endif
+#endif
             
             moyaProvider = MoyaProvider<Self>(requestClosure: { endpoint, closure in
                 MoyaProvider<Self>.defaultRequestMapping(for: endpoint, closure: { result in
@@ -58,6 +58,14 @@ extension Providable where Self: TargetType{
                 do{
                     switch result{
                     case let .success(response):
+                        guard 200..<300 ~= response.statusCode else{
+                            if response.statusCode == 401{
+                                Keychain["token"] = nil
+                                UserDefault.user = nil
+                                Authorization._isLoggedIn.send(false)
+                            }
+                            return
+                        }
                         if let token = response.response?.headers["Token"]{
                             Keychain["token"] = token
                             Authorization._isLoggedIn.send(true)
@@ -65,6 +73,9 @@ extension Providable where Self: TargetType{
                         
                         let jsonData = response.data
                         let decoded = try JSONDecoder.shared.decode(Response.self, from: jsonData)
+                        if let decoded = decoded as? NetworkAPI.User.Login.Response{
+                            UserDefault.user = decoded
+                        }
                         continuation.resume(returning: decoded)
                     case let .failure(error):
                         continuation.resume(throwing: error)
@@ -75,22 +86,12 @@ extension Providable where Self: TargetType{
             }
         }
         
-#if DEBUG
         return try await withTaskCancellationHandler {
-            try await withCheckedThrowingContinuation{ continuation in
+            try await withThrowingContinuation{ continuation in
                 cancellable.resume(argument: continuation)
             }
         } onCancel: {
             cancellable.cancel()
         }
-#else
-        return try await withTaskCancellationHandler {
-            try await withUnsafeThrowingContinuation { continuation in
-                cancellable.resume(argument: continuation)
-            }
-        } onCancel: {
-            cancellable.cancel()
-        }
-#endif
     }
 }

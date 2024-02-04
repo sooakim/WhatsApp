@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 김수아 on 2/3/24.
 //
@@ -11,6 +11,10 @@ import Moya
 extension NetworkAPI{
     public enum User: TargetType, Providable{
         case login(Login.Request)
+        case getAll(GetAll.Request)
+        case getStatus(GetStatus.Request)
+        case getUnreadMessages(GetUnreadMessages.Request)
+        
         
         public var baseURL: URL {
             URL(string: "http://118.67.134.127:8065/")!
@@ -21,6 +25,12 @@ extension NetworkAPI{
             switch self{
             case .login:
                 path += "/login"
+            case .getAll:
+                break
+            case let .getStatus(requestBody):
+                path += "/\(requestBody.userId)/status"
+            case let .getUnreadMessages(requestBody):
+                path += "/\(requestBody.userId)/channels/\(requestBody.channel_id)/unread"
             }
             return path
         }
@@ -29,6 +39,8 @@ extension NetworkAPI{
             switch self{
             case .login:
                 return .post
+            case .getAll, .getStatus, .getUnreadMessages:
+                return .get
             }
         }
         
@@ -36,6 +48,10 @@ extension NetworkAPI{
             switch self{
             case let .login(requestBody):
                 return .requestJSONEncodable(requestBody)
+            case let .getAll(requestBody):
+                return .requestParameters(parameters: JSONEncoder.shared.encode(requestBody), encoding: URLEncoding())
+            case .getStatus, .getUnreadMessages:
+                return .requestPlain
             }
         }
         
@@ -46,7 +62,17 @@ extension NetworkAPI{
 }
 
 public extension NetworkAPI.User{
-    var isLoggedIn: Bool{
+    static var isLoggedIn: Bool{
         Keychain["token"] != nil
+    }
+    
+    static var token: String?{
+        Keychain["token"]
+    }
+    
+    static func logout(){
+        Keychain["token"] = nil
+        UserDefault.user = nil
+        Authorization._isLoggedIn.send(false)
     }
 }
