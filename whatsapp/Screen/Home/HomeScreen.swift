@@ -11,22 +11,22 @@ import SwiftUI
 struct HomeScreen: View{
     var body: some View{
         TabView{
-            MessageListScreen()
+            ChannelListScreen()
                 .tabItem {
                     Image(.Icon.tabStatus)
                 }
             
-            MessageListScreen()
+            ChannelListScreen()
                 .tabItem {
                     Image(.Icon.tabCall)
                 }
             
-            MessageListScreen()
+            ChannelListScreen()
                 .tabItem {
                     Image(.Icon.tabChat)
                 }
             
-            MessageListScreen()
+            ChannelListScreen()
                 .tabItem {
                     Image(.Icon.tabSetting)
                 }

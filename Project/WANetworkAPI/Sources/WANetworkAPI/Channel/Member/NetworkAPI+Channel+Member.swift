@@ -2,25 +2,25 @@
 //  File.swift
 //
 //
-//  Created by 김수아 on 1/21/24.
+//  Created by 김수아 on 2/4/24.
 //
 
 import Foundation
 import Moya
 
-extension NetworkAPI{
-    public enum Channel: TargetType, Providable{
-        case getAll(GetAll.Request)
+extension NetworkAPI.Channel{
+    public enum Member: TargetType, Providable{
+        case getAll(channelId: String, GetAll.Request)
         
         public var baseURL: URL {
             URL(string: "http://118.67.134.127:8065/")!
         }
         
         public var path: String {
-            var path = "api/v4/channels"
+            var path = "api/v4/channels/"
             switch self{
-            case .getAll:
-                break
+            case let .getAll(channelId, _):
+                path += "\(channelId)/members"
             }
             return path
         }
@@ -34,7 +34,7 @@ extension NetworkAPI{
         
         public var task: Moya.Task {
             switch self{
-            case let .getAll(requestBody):
+            case let .getAll(_, requestBody):
                 do{
                     let jsonData = try JSONEncoder.shared.encode(requestBody)
                     let parameters = try JSONSerialization.jsonObject(with: jsonData) as! [String: Any]

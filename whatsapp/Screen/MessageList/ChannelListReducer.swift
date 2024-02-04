@@ -11,6 +11,8 @@ import WANetworkAPI
 
 @Reducer
 struct ChannelListReducer{
+    @Dependency(\.service) var service
+    
     struct State{
         var channels: [Channel] = []
     }
@@ -26,10 +28,9 @@ struct ChannelListReducer{
             switch action{
             case .loadAll:
                 return .run{ send in
-                    let request = NetworkAPI.Channel.GetAll.Request()
                     do{
-                        let responses: [NetworkAPI.Channel.GetAll.Response] = try await NetworkAPI.Channel.request(.getAll(request))
-                        return await send(.updateChannels(responses.map{ $0.asChannel() }))
+                        let channels = try await service.channelListService.requestChannels()
+                        return await send(.updateChannels(channels))
                     }catch{
                         return await send(.error(error))
                     }

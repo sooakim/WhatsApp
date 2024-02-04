@@ -8,8 +8,8 @@
 import Foundation
 import Moya
 
-public extension NetworkAPI{
-    enum User: TargetType, Providable{
+extension NetworkAPI{
+    public enum User: TargetType, Providable{
         case login(Login.Request)
         
         public var baseURL: URL {

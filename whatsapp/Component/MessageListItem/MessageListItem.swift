@@ -19,12 +19,12 @@ struct Message: Identifiable{
 }
 
 struct MessageListItem: View{
-    var message: Message
+    var channel: Channel
     
     var body: some View{
         HStack(spacing: 14){
-            AsyncImage(url: message.senderProfileURL) { image in
-                if message.isActiveUser {
+            AsyncImage(url: channel.senderProfileURL) { image in
+                if channel.isActiveUser {
                     image.resizable().clipShape(Circle()).padding(3)
                         .overlay{
                             Circle().stroke(Color.green, lineWidth: 3)
@@ -37,21 +37,21 @@ struct MessageListItem: View{
             }.frame(width: Metrics.profileSize, height: Metrics.profileSize)
             
             VStack(alignment: .leading, spacing: 0){
-                Text(styleable: message.senderName.lineHeight(24))
+                Text(styleable: channel.senderName.lineHeight(24))
                     .font(.custom(.bold, size: 16))
                     .foregroundStyle(Color.black100)
-                Text(styleable: message.lastMessage.lineHeight(16.41))
+                Text(styleable: channel.lastMessage.lineHeight(16.41))
                     .font(.custom(.regular, size: 14))
                     .foregroundStyle(Color.black100)
             }.frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .trailing, spacing: 0){
-                Text(styleable: message.lastMessageSentAt.asRelativeDateTime().lineHeight(16.41))
+                Text(styleable: channel.lastMessageSentAt.asRelativeDateTime().lineHeight(16.41))
                     .font(.custom(.regular, size: 14))
                     .foregroundStyle(Color.black100)
                 
-                if message.unreadMessageCount > 0{
-                    UnreadMessageBubble(count: message.unreadMessageCount)
+                if channel.unreadMessageCount > 0{
+                    UnreadMessageBubble(count: channel.unreadMessageCount)
                 }else{
                     Spacer().frame(height: 14.5)
                     Image(.Icon.messageRead)
@@ -99,7 +99,8 @@ private extension MessageListItem{
     List(0..<100){ index in
         if index % 2 == 0{
             MessageListItem(
-                message: Message(
+                channel: Channel(
+                    id: "",
                     isActiveUser: true,
                     senderProfileURL: URL(string: "https://placekitten.com/100/100"),
                     senderName: "Kaiya Rhiel Madsen",
@@ -110,7 +111,8 @@ private extension MessageListItem{
             )
         }else{
             MessageListItem(
-                message: Message(
+                channel: Channel(
+                    id: "",
                     isActiveUser: false,
                     senderProfileURL: URL(string: "https://placekitten.com/100/100"),
                     senderName: "Kaiya Rhiel Madsen",

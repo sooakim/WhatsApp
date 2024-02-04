@@ -1,5 +1,5 @@
 //
-//  MessageListScreen.swift
+//  ChannelListScreen.swift
 //  whatsapp
 //
 //  Created by 김수아 on 1/13/24.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import ComposableArchitecture
 
-struct MessageListScreen: View{
+struct ChannelListScreen: View{
     // MARK: - Private
     @Environment(\.store)
     private var store: StoreEnvironment
@@ -22,18 +22,14 @@ struct MessageListScreen: View{
             WithViewStore(store.channelList, observe: { $0.channels }){ viewStore in
                 List(viewStore.state){ channel in
                     // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
-//                    ZStack{
+                    ZStack{
 //                        NavigationLink {
 //                            MessageDetailScreen(message: message)
 //                        } label: {
 //                            EmptyView()
 //                        }.opacity(0)
-//                        MessageListItem(message: message)
-//                    }
-                    Text(channel.displayName)
-                    .listRowSeparator(.visible, edges: .bottom)
-                    .listRowSeparatorTint(Color.grayE2)
-                    .listRowInsets(.zero)
+                        MessageListItem(channel: channel)
+                    }
                 }
                 .listStyle(.plain)
                 .navigationTitle("Message")
@@ -55,6 +51,6 @@ struct MessageListScreen: View{
 }
 
 #Preview{
-    MessageListScreen()
+    ChannelListScreen()
         .environment(\.store, StoreEnvironment())
 }

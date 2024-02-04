@@ -64,7 +64,7 @@ extension NetworkAPI.Channel.GetAll{
         public let teamId: String
         
         @CodedAt("type")
-        public let type: String
+        public let type: ChannelType
         
         @CodedAt("display_name")
         public let displayName: String
@@ -101,5 +101,11 @@ extension NetworkAPI.Channel.GetAll{
         
         @CodedAt("policy_id")
         public let policyId: String?
+    }
+}
+
+extension NetworkAPI.Channel.GetAll.Response{
+    public enum ChannelType: String, Codable{
+        case P, G, O, D
     }
 }

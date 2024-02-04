@@ -16,7 +16,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.3")),
-        .package(url: "https://github.com/SwiftyLab/MetaCodable.git", .upToNextMajor(from: "1.0.0"))
+        .package(url: "https://github.com/SwiftyLab/MetaCodable.git", .upToNextMajor(from: "1.0.0")),
+        .package(name: "WAFoundation", path: "../WAFoundation")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -25,7 +26,8 @@ let package = Package(
             name: "WANetworkAPI",
             dependencies: [
                 .product(name: "CombineMoya", package: "Moya"),
-                .product(name: "MetaCodable", package: "MetaCodable")
+                .product(name: "MetaCodable", package: "MetaCodable"),
+                .product(name: "WAFoundation", package: "WAFoundation")
             ]
         ),
         .testTarget(

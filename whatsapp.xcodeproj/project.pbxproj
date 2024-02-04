@@ -18,7 +18,7 @@
 		584BBE2F2B52C57B00649628 /* NanumGothicLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 584BBE2B2B52C57B00649628 /* NanumGothicLight.otf */; };
 		584BBE312B52CD1F00649628 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE302B52CD1F00649628 /* Calendar.swift */; };
 		584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE322B52D19000649628 /* UnreadMessageBubble.swift */; };
-		584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE352B52D1C800649628 /* MessageListScreen.swift */; };
+		584BBE362B52D1C800649628 /* ChannelListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE352B52D1C800649628 /* ChannelListScreen.swift */; };
 		584BBE3C2B52D43900649628 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE3B2B52D43900649628 /* EdgeInsets.swift */; };
 		584BBE3F2B52D99700649628 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE3E2B52D99700649628 /* HomeScreen.swift */; };
 		584BBE412B52DB1B00649628 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584BBE402B52DB1B00649628 /* WelcomeScreen.swift */; };
@@ -50,6 +50,8 @@
 		58E434F92B6F30690099D490 /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434F82B6F30690099D490 /* MainReducer.swift */; };
 		58E435002B6F3DA60099D490 /* ChannelListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434FE2B6F3DA60099D490 /* ChannelListReducer.swift */; };
 		58E435012B6F3DA60099D490 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434FF2B6F3DA60099D490 /* Channel.swift */; };
+		58F1F0B42B6F6E74007A5DCC /* ChannelListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F1F0B32B6F6E74007A5DCC /* ChannelListService.swift */; };
+		58F1F0B92B6FA2DF007A5DCC /* WAFoundation in Resources */ = {isa = PBXBuildFile; fileRef = 58F1F0B82B6FA2DF007A5DCC /* WAFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +83,7 @@
 		584BBE2B2B52C57B00649628 /* NanumGothicLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicLight.otf; sourceTree = "<group>"; };
 		584BBE302B52CD1F00649628 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		584BBE322B52D19000649628 /* UnreadMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadMessageBubble.swift; sourceTree = "<group>"; };
-		584BBE352B52D1C800649628 /* MessageListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListScreen.swift; sourceTree = "<group>"; };
+		584BBE352B52D1C800649628 /* ChannelListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListScreen.swift; sourceTree = "<group>"; };
 		584BBE3B2B52D43900649628 /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
 		584BBE3E2B52D99700649628 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		584BBE402B52DB1B00649628 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 		58E434F82B6F30690099D490 /* MainReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReducer.swift; sourceTree = "<group>"; };
 		58E434FE2B6F3DA60099D490 /* ChannelListReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelListReducer.swift; sourceTree = "<group>"; };
 		58E434FF2B6F3DA60099D490 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		58F1F0B32B6F6E74007A5DCC /* ChannelListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListService.swift; sourceTree = "<group>"; };
+		58F1F0B82B6FA2DF007A5DCC /* WAFoundation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WAFoundation; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		583F0AAB2B5D342500F83B32 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				58F1F0B82B6FA2DF007A5DCC /* WAFoundation */,
 				583F0AAC2B5D342500F83B32 /* WANetworkAPI */,
 			);
 			path = Project;
@@ -229,7 +234,8 @@
 			children = (
 				58E434FF2B6F3DA60099D490 /* Channel.swift */,
 				58E434FE2B6F3DA60099D490 /* ChannelListReducer.swift */,
-				584BBE352B52D1C800649628 /* MessageListScreen.swift */,
+				584BBE352B52D1C800649628 /* ChannelListScreen.swift */,
+				58F1F0B32B6F6E74007A5DCC /* ChannelListService.swift */,
 			);
 			path = MessageList;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 				583F0AAD2B5D342500F83B32 /* WANetworkAPI in Resources */,
 				584BBE2C2B52C57B00649628 /* NanumGothicBold.otf in Resources */,
 				587052262B503C2100E08A89 /* Preview Assets.xcassets in Resources */,
+				58F1F0B92B6FA2DF007A5DCC /* WAFoundation in Resources */,
 				584BBE2F2B52C57B00649628 /* NanumGothicLight.otf in Resources */,
 				587052232B503C2100E08A89 /* Assets.xcassets in Resources */,
 				584BBE2E2B52C57B00649628 /* NanumGothicExtraBold.otf in Resources */,
@@ -575,9 +582,10 @@
 				584BBE412B52DB1B00649628 /* WelcomeScreen.swift in Sources */,
 				584BBE552B53209A00649628 /* MessageFromUserItem.swift in Sources */,
 				587052212B503C1D00E08A89 /* ContentView.swift in Sources */,
-				584BBE362B52D1C800649628 /* MessageListScreen.swift in Sources */,
+				584BBE362B52D1C800649628 /* ChannelListScreen.swift in Sources */,
 				58E435002B6F3DA60099D490 /* ChannelListReducer.swift in Sources */,
 				58E434ED2B6EA3A30099D490 /* LoginReducer.swift in Sources */,
+				58F1F0B42B6F6E74007A5DCC /* ChannelListService.swift in Sources */,
 				58E434EA2B6E9E8D0099D490 /* LoginScreen.swift in Sources */,
 				584BBE332B52D19000649628 /* UnreadMessageBubble.swift in Sources */,
 				584BBE522B531CA000649628 /* SizableView.swift in Sources */,

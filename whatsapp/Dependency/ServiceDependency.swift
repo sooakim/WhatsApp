@@ -10,12 +10,13 @@ import ComposableArchitecture
 
 struct ServiceDependency{
     let loginService: LoginServiceable
-    
+    let channelListService: ChannelListServiceable
 }
 
 extension ServiceDependency: DependencyKey{
     static var liveValue: ServiceDependency = Self(
-        loginService: LoginService()
+        loginService: LoginService(),
+        channelListService: ChannelListService()
     )
 }
 
