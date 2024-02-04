@@ -33,21 +33,27 @@ struct ChannelListService: ChannelListServiceable{
                 let response: NetworkAPI.User.GetStatus.Response = try await NetworkAPI.User.request(.getStatus(request))
                 return response
             }
+            let lastPostResponse = try await { [channel] in
+                let request = NetworkAPI.Post.GetForChannel.Request(channelId: channel.id, perPage: 1)
+                let response: NetworkAPI.Post.GetForChannel.Response = try await NetworkAPI.Post.request(.getForChannel(request))
+                return response.order.first.compactMap{ [response] in response.posts[$0] }
+            }()
     
             return (
                 try await UserDefault.user.map{ try await unreadMessageResponse($0.id) },
                 userResponse,
-                try await userResponse.map{ try await statusResponse($0.id) }
+                try await userResponse.map{ try await statusResponse($0.id) },
+                lastPostResponse
             )
         }
         return channels.enumerated().map{ (index, channel) in
-            let (unreadMessage, sender, senderStatus) = extraInfos[index]
+            let (unreadMessage, sender, senderStatus, lastPost) = extraInfos[index]
             return Channel(
                 id: channel.id,
                 isActiveUser: senderStatus?.status == .online,
                 senderProfileURL: sender.compactMap{ URL(string: "http://118.67.134.127:8065/api/v4/users/\($0.id)/image") },
                 senderName: sender?.username ?? "",
-                lastMessage: channel.displayName,
+                lastMessage: lastPost?.message ?? "",
                 lastMessageSentAt: Date.init(timeIntervalSince1970: TimeInterval(channel.lastPostedAt / 1_000)),
                 unreadMessageCount: unreadMessage?.messageCount ?? 0
             )
@@ -55,5 +61,10 @@ struct ChannelListService: ChannelListServiceable{
     }
     
     // MARK: - Private
-    typealias ExtraInfo = (NetworkAPI.User.GetUnreadMessages.Response?, NetworkAPI.User.GetAll.Response?, NetworkAPI.User.GetStatus.Response?)
+    private typealias ExtraInfo = (
+        NetworkAPI.User.GetUnreadMessages.Response?,
+        NetworkAPI.User.GetAll.Response?,
+        NetworkAPI.User.GetStatus.Response?,
+        NetworkAPI.Post.GetForChannel.Response.Post?
+    )
 }
