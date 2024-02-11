@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import WANetworkAPI
 
 struct MainScreen: View{
     @Environment(\.store)
@@ -31,4 +32,3 @@ struct MainScreen: View{
 #Preview{
     MainScreen()
 }
-

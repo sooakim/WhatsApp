@@ -70,7 +70,7 @@ struct MessageDetailScreen: View{
                                     .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
                                     .overlay{
                                         Circle()
-                                            .stroke(Color.white, lineWidth: 2)
+                                            .stroke(Color.white100, lineWidth: 2)
                                             .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
                                     }
                             }

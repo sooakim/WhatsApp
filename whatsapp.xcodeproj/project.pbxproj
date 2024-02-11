@@ -45,6 +45,7 @@
 		58A023B62B789C4F0080EBCD /* ServiceDependency+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A023B52B789C4F0080EBCD /* ServiceDependency+Mock.swift */; };
 		58A023B82B789C800080EBCD /* ChannelListService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A023B72B789C800080EBCD /* ChannelListService+Mock.swift */; };
 		58A023BA2B789FAD0080EBCD /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A023B92B789FAD0080EBCD /* Date+Extension.swift */; };
+		58A023BC2B78BA570080EBCD /* WANetworkAPI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 583F0AA42B5D2A8600F83B32 /* WANetworkAPI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		58B0341B2B701B980012CA0D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 58B0341A2B701B980012CA0D /* Kingfisher */; };
 		58E434EA2B6E9E8D0099D490 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434E92B6E9E8D0099D490 /* LoginScreen.swift */; };
 		58E434ED2B6EA3A30099D490 /* LoginReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E434EC2B6EA3A30099D490 /* LoginReducer.swift */; };
@@ -73,6 +74,20 @@
 			remoteInfo = whatsapp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58A023BD2B78BA570080EBCD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58A023BC2B78BA570080EBCD /* WANetworkAPI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		583437B72B53AA840081B092 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -444,6 +459,7 @@
 				587052172B503C1D00E08A89 /* Sources */,
 				587052182B503C1D00E08A89 /* Frameworks */,
 				587052192B503C1D00E08A89 /* Resources */,
+				58A023BD2B78BA570080EBCD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

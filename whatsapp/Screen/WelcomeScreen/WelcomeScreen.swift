@@ -53,7 +53,7 @@ struct WelcomeScreen: View{
                     didTapDone?()
                 }, label: {
                     Text("Done")
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.white100)
                 })
                 .padding(EdgeInsets(vertical: 12, horizontal: 90))
                 .background(Color.key)
