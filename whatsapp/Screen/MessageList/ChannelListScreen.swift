@@ -24,11 +24,11 @@ struct ChannelListScreen: View{
                 List(viewStore.state){ channel in
                     // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
                     ZStack{
-//                        NavigationLink {
-//                            MessageDetailScreen(message: message)
-//                        } label: {
-//                            EmptyView()
-//                        }.opacity(0)
+                        NavigationLink {
+                            MessageDetailScreen(channel: channel)
+                        } label: {
+                            EmptyView()
+                        }.opacity(0)
                         MessageListItem(channel: channel)
                     }
                 }

@@ -10,12 +10,12 @@ import SwiftUI
 
 enum ItemType{
     case date
-    case messageFromUser(Message)
-    case messageFromOther(Message)
+    case messageFromUser(Channel)
+    case messageFromOther(Channel)
 }
 
 struct MessageDetailScreen: View{
-    var message: Message
+    var channel: Channel
     
     @State var messageInput: String = ""
     
@@ -30,17 +30,17 @@ struct MessageDetailScreen: View{
                             if index % 3 == 0{
                                 itemType = .date
                             }else if index % 3 == 1{
-                                itemType = .messageFromUser(message)
+                                itemType = .messageFromUser(channel)
                             }else{
-                                itemType = .messageFromOther(message)
+                                itemType = .messageFromOther(channel)
                             }
                             return itemType
                         }()){
                         case .date:
                             MessageDateItem()
-                        case let .messageFromOther(message):
+                        case let .messageFromOther(channel):
                             MessageFromOtherItem()
-                        case let .messageFromUser(message):
+                        case let .messageFromUser(channel):
                             MessageFromUserItem()
                         }
                     }
@@ -56,15 +56,15 @@ struct MessageDetailScreen: View{
             // FIXME: ToolbarItem(.keyboard){}로 넣고 싶었는데 SwiftUI에서 viewController를 어떻게 becomeFirstResponder로 만들어야할지 모르겠음
             InputAccessoryView(messageInput: $messageInput)
         }
-        .navigationTitle(message.senderName)
+        .navigationTitle(channel.senderName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {
-                AsyncImage(url: message.senderProfileURL) { image in
+                AsyncImage(url: channel.senderProfileURL) { image in
                     image.resizable()
                         .clipShape(Circle())
                         .overlay(alignment: .bottomTrailing) {
-                            if message.isActiveUser {
+                            if channel.isActiveUser {
                                 Circle()
                                     .fill(Color.green)
                                     .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
@@ -142,15 +142,14 @@ private extension InputAccessoryView{
 
 #Preview{
     NavigationStack{
-        MessageDetailScreen(
-            message: Message(
-                isActiveUser: true,
-                senderProfileURL: URL(string: "https://placekitten.com/100/100"),
-                senderName: "Kaiya Rhiel Madsen",
-                lastMessage: "I need a link to the project",
-                lastMessageSentAt: Date(),
-                unreadMessageCount: 2
-            )
-        )
+        MessageDetailScreen(channel: Channel(
+            id: "dng9iumsbfnk9d6wuhb5m4hoga",
+            isActiveUser: true,
+            senderProfileURL: URL(string: "http://118.67.134.127:8065/api/v4/users/bmxkuy8r1bri5xwx64xhs1o8tw/image"),
+            senderName: "alice2863",
+            lastMessage: "alice2863 joined the channel.",
+            lastMessageSentAt: Date(iso8601: "2024-02-11'T'06:05:58'Z'0000") ?? Date(),
+            unreadMessageCount: 0
+        )).environment(\.store, StoreEnvironment())
     }
 }

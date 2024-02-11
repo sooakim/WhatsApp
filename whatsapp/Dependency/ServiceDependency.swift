@@ -18,6 +18,8 @@ extension ServiceDependency: DependencyKey{
         loginService: LoginService(),
         channelListService: ChannelListService()
     )
+    static var previewValue: ServiceDependency = .mock
+    static var testValue: ServiceDependency = .mock
 }
 
 extension DependencyValues{
