@@ -8,23 +8,35 @@
 import Foundation
 import MetaCodable
 
-struct WebSocketResponse<Data: Decodable>: Decodable{
-    let event: WebSocketEvent
-    let data: Data
-    let broadcast: Broadcast
-    let seq: Int
+public struct WebSocketResponse<Data: Decodable>: Decodable{
+    public let event: WebSocketEvent
+    public let data: Data
+    public let broadcast: Broadcast
+    public let seq: Int
     
     @Codable
-    struct Broadcast{
+    public struct Broadcast{
         @CodedAt("omit_users")
-        let omitUsers: [String]?
+        public let omitUsers: [String]?
         @CodedAt("user_id")
-        let userId: String
+        public let userId: String
         @CodedAt("team_id")
-        let teamId: String
+        public let teamId: String
         @CodedAt("connection_id")
-        let connectionId: String
+        public let connectionId: String
         @CodedAt("omit_connection_id")
-        let omitConnectionId: String
+        public let omitConnectionId: String
+    }
+}
+
+public extension WebSocketResponse{
+    init?(from receivedMessage: WebSocketManager.Message){
+        guard
+            case let .string(receivedJson) = receivedMessage,
+            let receivedData = receivedJson.data(using: .utf8),
+            let received = try? JSONDecoder.shared.decode(Self.self, from: receivedData)
+        else{ return nil }
+        
+        self = received
     }
 }

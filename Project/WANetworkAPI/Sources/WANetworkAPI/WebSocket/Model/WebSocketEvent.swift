@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WebSocketEvent: String, Decodable {
+public enum WebSocketEvent: String, Decodable {
     case addedToTeam = "added_to_team"
     case authenticationChallenge = "authentication_challenge"
     case channelConverted = "channel_converted"

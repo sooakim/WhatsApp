@@ -10,7 +10,8 @@ import WANetworkAPI
 
 struct Channel: Equatable, Identifiable{
     let id: String
-    let isActiveUser: Bool
+    var isActiveUser: Bool
+    let senderId: String?
     let senderProfileURL: URL?
     let senderName: String
     let lastMessage: String

@@ -22,12 +22,11 @@ extension NetworkAPI.WebSocket{
             try await WebSocketManager.shared.send(with: .string(json))
             
             while !Task.isCancelled{
-                guard
-                    case let .string(receivedJson) = try await WebSocketManager.shared.receive(),
-                    let received = receivedJson.data(using: .utf8)
-                else{ throw Error.invalidResponse }
-                
-                let webSocketResponse = try JSONDecoder.shared.decode(WebSocketResponse<Response>.self, from: received)
+                guard 
+                    let receivedMessage = try await WebSocketManager.shared.receive(),
+                    let webSocketResponse = WebSocketResponse<Response>(from: receivedMessage)
+                else{ continue }
+              
                 guard webSocketResponse.seq == 0 else{ continue }
                 return webSocketResponse.data
             }

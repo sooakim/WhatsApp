@@ -145,6 +145,7 @@ private extension InputAccessoryView{
         MessageDetailScreen(channel: Channel(
             id: "dng9iumsbfnk9d6wuhb5m4hoga",
             isActiveUser: true,
+            senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
             senderProfileURL: URL(string: "ServerEnvironment.baseHttpURL.absoluteString/api/v4/users/bmxkuy8r1bri5xwx64xhs1o8tw/image"),
             senderName: "alice2863",
             lastMessage: "alice2863 joined the channel.",

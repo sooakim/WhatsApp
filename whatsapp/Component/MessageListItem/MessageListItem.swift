@@ -117,6 +117,7 @@ private extension MessageListItem{
                 channel: Channel(
                     id: "",
                     isActiveUser: true,
+                    senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
                     senderProfileURL: URL(string: "https://placekitten.com/100/100"),
                     senderName: "Kaiya Rhiel Madsen",
                     lastMessage: "I need a link to the project",
@@ -129,6 +130,7 @@ private extension MessageListItem{
                 channel: Channel(
                     id: "",
                     isActiveUser: false,
+                    senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
                     senderProfileURL: URL(string: "https://placekitten.com/100/100"),
                     senderName: "Kaiya Rhiel Madsen",
                     lastMessage: "I need a link to the project",

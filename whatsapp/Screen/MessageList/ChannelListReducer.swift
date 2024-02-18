@@ -8,6 +8,7 @@
 import Foundation
 import ComposableArchitecture
 import WANetworkAPI
+import Combine
 
 @Reducer
 struct ChannelListReducer{
@@ -15,6 +16,7 @@ struct ChannelListReducer{
     
     struct State{
         var channels: [Channel] = []
+        var channelIndexesByUserId: [String: [Int]] = [:]
     }
     
     enum Action{
@@ -22,6 +24,7 @@ struct ChannelListReducer{
         case detachEventListener
         case loadAll
         case updateChannels([Channel])
+        case updateSenderStatus(isActiveUser: Bool, userId: String)
         case error(Error)
     }
     
@@ -30,11 +33,12 @@ struct ChannelListReducer{
             switch action{
             case .attachEventListener:
                 return .run{ send in
-                    do{
-                        try await service.channelListService.requestStatusChanges()
-                    }catch{
-                        print(error)
-                        return await send(.error(error))
+                    let publisher = AsyncPublisher(service.channelListService.requestStatusChanges())
+                    for await statusChange in publisher{
+                        await send(.updateSenderStatus(
+                            isActiveUser: statusChange.status == "online",
+                            userId: statusChange.userId
+                        ))
                     }
                 }.cancellable(id: CancelId.eventListener)
             case .detachEventListener:
@@ -51,6 +55,25 @@ struct ChannelListReducer{
                 }
             case let .updateChannels(channels):
                 state.channels = channels
+                
+                //indexing...
+                var channelIndexesByUserId: [String: [Int]] = [:]
+                for (index, channel) in channels.enumerated(){
+                    guard let senderId = channel.senderId else{ continue }
+                    var channels = channelIndexesByUserId[senderId, default: []]
+                    channels.append(index)
+                    channelIndexesByUserId[senderId] = channels
+                }
+                state.channelIndexesByUserId = channelIndexesByUserId
+            case let .updateSenderStatus(isActiveUser, userId):
+                let targetIndexes = Set(state.channelIndexesByUserId[userId, default: []])
+    
+                state.channels = state.channels.enumerated().map { index, channel in
+                    guard targetIndexes.contains(index) else{ return channel }
+                    var newChannel = channel
+                    newChannel.isActiveUser = isActiveUser
+                    return newChannel
+                }
             case .error:
                 break
             }

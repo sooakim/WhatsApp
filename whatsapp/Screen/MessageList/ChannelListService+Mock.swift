@@ -7,9 +7,11 @@
 
 import Foundation
 import WANetworkAPI
+import Combine
 
 final class ChannelListServiceMock: ChannelListServiceable{
-    func requestStatusChanges() async throws {
+    func requestStatusChanges() -> AnyPublisher<WANetworkAPI.NetworkAPI.WebSocket.StatusChange.Response, Never> {
+        return PassthroughSubject().eraseToAnyPublisher()
         // TODO: implement later
     }
     
@@ -18,6 +20,7 @@ final class ChannelListServiceMock: ChannelListServiceable{
             Channel(
                 id: "dng9iumsbfnk9d6wuhb5m4hoga",
                 isActiveUser: true,
+                senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
                 senderProfileURL: URL(string: "\(ServerEnvironment.baseHttpURL.absoluteString)/api/v4/users/bmxkuy8r1bri5xwx64xhs1o8tw/image"),
                 senderName: "alice2863",
                 lastMessage: "alice2863 joined the channel.",
@@ -27,6 +30,7 @@ final class ChannelListServiceMock: ChannelListServiceable{
             Channel(
                 id: "brx8ti5u5bdzud6n6afs6fufno",
                 isActiveUser: true,
+                senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
                 senderProfileURL: URL(string: "\(ServerEnvironment.baseHttpURL.absoluteString)/api/v4/users/bmxkuy8r1bri5xwx64xhs1o8tw/image"),
                 senderName: "alice2863",
                 lastMessage: "alice2863 joined the channel.",

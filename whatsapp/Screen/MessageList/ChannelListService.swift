@@ -8,20 +8,37 @@
 import Foundation
 import WANetworkAPI
 import WAFoundation
+import Combine
 
 protocol ChannelListServiceable{
-    func requestStatusChanges() async throws
+    func requestStatusChanges() -> AnyPublisher<NetworkAPI.WebSocket.StatusChange.Response, Never>
     
     func requestChannels() async throws -> [Channel]
 }
 
 struct ChannelListService: ChannelListServiceable{
-    func requestStatusChanges() async throws {
-        try await NetworkAPI.WebSocket.Auth.request(.init())
-        guard let stream = WebSocketManager.shared.receiveStream() else{ return }
-        for try await message in stream{
-            print("=== socket test: ", message)
-        }
+    func requestStatusChanges() -> AnyPublisher<NetworkAPI.WebSocket.StatusChange.Response, Never> {
+        Deferred {
+            let subject = PassthroughSubject<NetworkAPI.WebSocket.StatusChange.Response, Never>()
+            let task = Task{
+                do{
+                    try await NetworkAPI.WebSocket.Auth.request(.init())
+                    guard let stream = WebSocketManager.shared.receiveStream() else{ return }
+                    
+                    for try await receivedMessage in stream{
+                        guard let response = WebSocketResponse<NetworkAPI.WebSocket.StatusChange.Response>(from: receivedMessage) else{ continue }
+                        subject.send(response.data)
+                    }
+                }catch{
+                    print(error)
+                }
+            }
+            
+            return subject.handleEvents(receiveCancel: {
+                guard !task.isCancelled else{ return }
+                task.cancel()
+            })
+        }.eraseToAnyPublisher()
     }
     
     func requestChannels() async throws -> [Channel] {
@@ -48,7 +65,7 @@ struct ChannelListService: ChannelListServiceable{
                 let response: NetworkAPI.Post.GetForChannel.Response = try await NetworkAPI.Post.request(.getForChannel(request))
                 return response.order.first.compactMap{ [response] in response.posts[$0] }
             }()
-    
+            
             return (
                 try await UserDefault.user.map{ try await unreadMessageResponse($0.id) },
                 userResponse,
@@ -61,6 +78,7 @@ struct ChannelListService: ChannelListServiceable{
             return Channel(
                 id: channel.id,
                 isActiveUser: senderStatus?.status == .online,
+                senderId: sender?.id,
                 senderProfileURL: sender.compactMap{ URL(string: "\(ServerEnvironment.baseHttpURL.absoluteString)/api/v4/users/\($0.id)/image") },
                 senderName: sender?.username ?? "",
                 lastMessage: lastPost?.message ?? "",
