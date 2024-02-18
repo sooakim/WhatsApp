@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 enum ItemType{
     case date
@@ -60,24 +61,25 @@ struct MessageDetailScreen: View{
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {
-                AsyncImage(url: channel.senderProfileURL) { image in
-                    image.resizable()
-                        .clipShape(Circle())
-                        .overlay(alignment: .bottomTrailing) {
-                            if channel.isActiveUser {
-                                Circle()
-                                    .fill(Color.green)
-                                    .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
-                                    .overlay{
-                                        Circle()
-                                            .stroke(Color.white100, lineWidth: 2)
-                                            .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
-                                    }
-                            }
+                KFImage.url(channel.senderProfileURL)
+                    .placeholder{
+                        Circle().fill(Color.key)
+                    }
+                    .resizable()
+                    .clipShape(Circle())
+                    .overlay(alignment: .bottomTrailing) {
+                        if channel.isActiveUser {
+                            Circle()
+                                .fill(Color.green)
+                                .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
+                                .overlay{
+                                    Circle()
+                                        .stroke(Color.white100, lineWidth: 2)
+                                        .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
+                                }
                         }
-                } placeholder: {
-                    Circle().fill(Color.key)
-                }.frame(width: Metrics.profileSize, height: Metrics.profileSize)
+                    }
+                    .frame(width: Metrics.profileSize, height: Metrics.profileSize)
             }
         }
         .toolbar(.hidden, for: .tabBar)

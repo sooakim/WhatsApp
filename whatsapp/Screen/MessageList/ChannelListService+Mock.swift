@@ -15,7 +15,7 @@ final class ChannelListServiceMock: ChannelListServiceable{
         // TODO: implement later
     }
     
-    func requestChannels() async throws -> [Channel] {
+    func requestChannels(page: Int, perPage: Int) async throws -> [Channel] {
         [
             Channel(
                 id: "dng9iumsbfnk9d6wuhb5m4hoga",

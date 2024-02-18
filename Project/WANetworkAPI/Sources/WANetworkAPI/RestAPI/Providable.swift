@@ -58,15 +58,13 @@ extension Providable where Self: TargetType{
                 do{
                     switch result{
                     case let .success(response):
-                        guard 200..<300 ~= response.statusCode else{
+                        if (200..<300 ~= response.statusCode) == false{
                             if response.statusCode == 401{
                                 Keychain["token"] = nil
                                 UserDefault.user = nil
                                 Authorization._isLoggedIn.send(false)
                             }
-                            return
-                        }
-                        if let token = response.response?.headers["Token"]{
+                        }else if let token = response.response?.headers["Token"]{
                             Keychain["token"] = token
                             Authorization._isLoggedIn.send(true)
                         }

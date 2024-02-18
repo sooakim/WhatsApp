@@ -13,7 +13,7 @@ import Combine
 protocol ChannelListServiceable{
     func requestStatusChanges() -> AnyPublisher<NetworkAPI.WebSocket.StatusChange.Response, Never>
     
-    func requestChannels() async throws -> [Channel]
+    func requestChannels(page: Int, perPage: Int) async throws -> [Channel]
 }
 
 struct ChannelListService: ChannelListServiceable{
@@ -41,8 +41,8 @@ struct ChannelListService: ChannelListServiceable{
         }.eraseToAnyPublisher()
     }
     
-    func requestChannels() async throws -> [Channel] {
-        let channelRequest = NetworkAPI.Channel.GetAll.Request()
+    func requestChannels(page: Int, perPage: Int) async throws -> [Channel] {
+        let channelRequest = NetworkAPI.Channel.GetAll.Request(page: page, perPage: perPage, includeTotalCount: false)
         let channels: [NetworkAPI.Channel.GetAll.Response] = try await NetworkAPI.Channel.request(.getAll(channelRequest))
         let extraInfos = try await channels.asyncMap{ (channel) -> ExtraInfo in
             let userResponse: NetworkAPI.User.GetAll.Response? = try await { [channel] in
@@ -73,6 +73,7 @@ struct ChannelListService: ChannelListServiceable{
                 lastPostResponse
             )
         }
+        
         return channels.enumerated().map{ (index, channel) in
             let (unreadMessage, sender, senderStatus, lastPost) = extraInfos[index]
             return Channel(

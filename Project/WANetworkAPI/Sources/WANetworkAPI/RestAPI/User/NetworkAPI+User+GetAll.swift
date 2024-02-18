@@ -113,7 +113,7 @@ extension NetworkAPI.User.GetAll{
         public let notifyProps: NotifyProps?
         
         @CodedAt("props")
-        public let props: String?
+        public let props: [String: String]?
         
         @CodedAt("last_password_update")
         public let lastPasswordUpdate: Int?

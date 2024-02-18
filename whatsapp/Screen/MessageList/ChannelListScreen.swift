@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import ComposableArchitecture
 import WANetworkAPI
+import Algorithms
 
 struct ChannelListScreen: View{
     // MARK: - Private
@@ -21,7 +22,7 @@ struct ChannelListScreen: View{
     var body: some View{
         NavigationStack{
             WithViewStore(store.channelList, observe: { $0.channels }){ viewStore in
-                List(viewStore.state){ channel in
+                List(viewStore.state.indexed(), id: \.1.id){ index, channel in
                     // FIXME: listRowSeparator에 inset을 주는 옵션을 찾지 못함. 이게 왜 없음..?
                     ZStack{
                         NavigationLink {
@@ -30,6 +31,9 @@ struct ChannelListScreen: View{
                             EmptyView()
                         }.opacity(0)
                         MessageListItem(channel: channel)
+                    }.onAppear {
+                        guard max(0, viewStore.state.count - 5) > index else{ return }
+                        store.channelList.send(.scrolledToBottom)
                     }
                 }
                 .listStyle(.plain)
@@ -48,7 +52,6 @@ struct ChannelListScreen: View{
             }
         }.onAppear(perform: {
             store.channelList.send(.attachEventListener)
-            
         })
         .onDisappear(perform: {
             store.channelList.send(.detachEventListener)

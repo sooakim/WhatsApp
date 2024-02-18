@@ -35,11 +35,15 @@ public final class WebSocketManager: NSObject{
     }
     
     public func send(with message: Message) async throws {
+        connectIfNeeded()
+        
         guard let webSocket else{ return }
         return try await webSocket.send(message.convert())
     }
     
     public func sendPing() async throws {
+        connectIfNeeded()
+        
         guard let webSocket else{ return }
         return try await withThrowingContinuation{ continuation in
             webSocket.sendPing{ error in
@@ -53,6 +57,8 @@ public final class WebSocketManager: NSObject{
     }
     
     public func receiveStream() -> AsyncThrowingStream<Message, Error>?{
+        connectIfNeeded()
+        
         guard let webSocket else{ return nil }
         return AsyncThrowingStream(Message.self, bufferingPolicy: .bufferingNewest(1)) { [weak weakWebSocket = webSocket] continuation in
             let task = Task(priority: .high) { [weak weakWebSocket = weakWebSocket] in
@@ -73,6 +79,8 @@ public final class WebSocketManager: NSObject{
     }
     
     public func receive() async throws -> Message?{
+        connectIfNeeded()
+        
         guard let webSocket else{ return nil }
         return (try await webSocket.receive()).convert()
     }
