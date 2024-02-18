@@ -10,10 +10,20 @@ import WANetworkAPI
 import WAFoundation
 
 protocol ChannelListServiceable{
+    func requestStatusChanges() async throws
+    
     func requestChannels() async throws -> [Channel]
 }
 
 struct ChannelListService: ChannelListServiceable{
+    func requestStatusChanges() async throws {
+        try await NetworkAPI.WebSocket.Auth.request(.init())
+        guard let stream = WebSocketManager.shared.receiveStream() else{ return }
+        for try await message in stream{
+            print("=== socket test: ", message)
+        }
+    }
+    
     func requestChannels() async throws -> [Channel] {
         let channelRequest = NetworkAPI.Channel.GetAll.Request()
         let channels: [NetworkAPI.Channel.GetAll.Response] = try await NetworkAPI.Channel.request(.getAll(channelRequest))
@@ -51,7 +61,7 @@ struct ChannelListService: ChannelListServiceable{
             return Channel(
                 id: channel.id,
                 isActiveUser: senderStatus?.status == .online,
-                senderProfileURL: sender.compactMap{ URL(string: "http://118.67.134.127:8065/api/v4/users/\($0.id)/image") },
+                senderProfileURL: sender.compactMap{ URL(string: "\(ServerEnvironment.baseHttpURL.absoluteString)/api/v4/users/\($0.id)/image") },
                 senderName: sender?.username ?? "",
                 lastMessage: lastPost?.message ?? "",
                 lastMessageSentAt: Date.init(timeIntervalSince1970: TimeInterval(channel.lastPostedAt / 1_000)),

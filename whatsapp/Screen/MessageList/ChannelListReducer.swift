@@ -18,6 +18,8 @@ struct ChannelListReducer{
     }
     
     enum Action{
+        case attachEventListener
+        case detachEventListener
         case loadAll
         case updateChannels([Channel])
         case error(Error)
@@ -26,6 +28,17 @@ struct ChannelListReducer{
     var body: some Reducer<State, Action> {
         Reduce{ state, action in
             switch action{
+            case .attachEventListener:
+                return .run{ send in
+                    do{
+                        try await service.channelListService.requestStatusChanges()
+                    }catch{
+                        print(error)
+                        return await send(.error(error))
+                    }
+                }.cancellable(id: CancelId.eventListener)
+            case .detachEventListener:
+                return .cancel(id: CancelId.eventListener)
             case .loadAll:
                 return .run{ send in
                     do{
@@ -43,5 +56,9 @@ struct ChannelListReducer{
             }
             return .none
         }
+    }
+    
+    private enum CancelId{
+        case eventListener
     }
 }

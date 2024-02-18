@@ -23,22 +23,9 @@ public final class WebSocketManager: NSObject{
         webSocket.resume()
     }
     
-    public func connectWithAuth() async throws {
-        guard let token = Keychain["token"] else{ return }
-        
-        if webSocket == nil{
-            connect()
-        }
-        guard let webSocket else{ return }
-        
-        let request = SocketConnectionWithAuthRequest(
-            seq: 1,
-            action: "authentication_challenge",
-            data: SocketConnectionWithAuthRequest.Data(token: token)
-        )
-        let json = String(data: try JSONEncoder.shared.encode(request), encoding: .utf8) ?? ""
-        try await webSocket.send(.string(json))
-        let _ = try await webSocket.receive()
+    public func connectIfNeeded(){
+        guard webSocket == nil else{ return }
+        connect()
     }
     
     public func disconnect(){
@@ -146,7 +133,7 @@ private extension URLSessionWebSocketTask.Message{
 }
 
 private extension WebSocketManager{
-    static let url = URL(string: "ws://118.67.134.127:8065/api/v4/websocket")!
+    static let url = ServerEnvironment.baseSocketURL
 }
 
 private extension OperationQueue{

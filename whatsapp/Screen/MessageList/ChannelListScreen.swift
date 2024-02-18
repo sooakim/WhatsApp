@@ -47,8 +47,15 @@ struct ChannelListScreen: View{
                 }
             }
         }.onAppear(perform: {
-            store.channelList.send(.loadAll)
+            store.channelList.send(.attachEventListener)
+            
         })
+        .onDisappear(perform: {
+            store.channelList.send(.detachEventListener)
+        })
+        .task{
+            store.channelList.send(.loadAll)
+        }
     }
 }
 

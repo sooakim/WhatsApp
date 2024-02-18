@@ -17,7 +17,7 @@ extension NetworkAPI{
         
         
         public var baseURL: URL {
-            URL(string: "http://118.67.134.127:8065/")!
+            ServerEnvironment.baseHttpURL
         }
         
         public var path: String {

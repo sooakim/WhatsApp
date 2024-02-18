@@ -8,7 +8,11 @@
 import Foundation
 
 extension JSONEncoder{
-    static let shared = JSONEncoder()
+    static let shared = {
+        let instance = JSONEncoder()
+//        instance.keyEncodingStrategy = .convertToSnakeCase
+        return instance
+    }()
 }
 
 extension JSONEncoder{

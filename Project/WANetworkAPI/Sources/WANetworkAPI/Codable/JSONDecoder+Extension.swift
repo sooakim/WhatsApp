@@ -8,6 +8,10 @@
 import Foundation
 
 extension JSONDecoder{
-    static let shared = JSONDecoder()
+    static let shared = {
+        let instance = JSONDecoder()
+//        instance.keyDecodingStrategy = .convertFromSnakeCase
+        return instance
+    }()
 }
 
