@@ -1,5 +1,5 @@
 //
-//  MessageListItem.swift
+//  ChannelListItem.swift
 //  whatsapp
 //
 //  Created by 김수아 on 1/12/24.
@@ -9,17 +9,7 @@ import Foundation
 import SwiftUI
 import Kingfisher
 
-struct Message: Identifiable{
-    let id: UUID = UUID()
-    let isActiveUser: Bool
-    let senderProfileURL: URL?
-    let senderName: String
-    let lastMessage: String
-    let lastMessageSentAt: Date
-    let unreadMessageCount: Int
-}
-
-struct MessageListItem: View{
+struct ChannelListItem: View{
     var channel: Channel
     
     var body: some View{
@@ -77,34 +67,9 @@ struct MessageListItem: View{
     }
 }
 
-private extension Date{
-    func asRelativeDateTime() -> String{
-        let dateComponents = Calendar.gmt.dateComponents([.minute, .hour, .day], from: self, to: Date())
-        
-        let minutes = dateComponents.minute ?? .zero
-        if minutes < 1{
-            return "지금"
-        }
-        
-        let hours = dateComponents.hour ?? .zero
-        if hours < 1{
-            return String(format: "%d분 전", minutes)
-        }
-        
-        let days = dateComponents.hour ?? .zero
-        if days < 1{
-            return String(format: "%d시간 전", hours)
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.locale = Locale.current
-        return dateFormatter.string(from: self)
-    }
-}
 
-private extension MessageListItem{
+
+private extension ChannelListItem{
     enum Metrics{
         static let profileSize: CGFloat = 55
     }
@@ -113,7 +78,7 @@ private extension MessageListItem{
 #Preview{
     List(0..<100){ index in
         if index % 2 == 0{
-            MessageListItem(
+            ChannelListItem(
                 channel: Channel(
                     id: "",
                     isActiveUser: true,
@@ -126,7 +91,7 @@ private extension MessageListItem{
                 )
             )
         }else{
-            MessageListItem(
+            ChannelListItem(
                 channel: Channel(
                     id: "",
                     isActiveUser: false,

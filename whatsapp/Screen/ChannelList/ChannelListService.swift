@@ -50,10 +50,16 @@ struct ChannelListService: ChannelListServiceable{
                 let responses: [NetworkAPI.User.GetAll.Response] = try await NetworkAPI.User.request(.getAll(request))
                 return responses.first
             }()
-            let unreadMessageResponse = { [channel] (userId: String) in
+            let unreadMessageResponse = { [channel] (userId: String) -> NetworkAPI.User.GetUnreadMessages.Response? in
                 let request = NetworkAPI.User.GetUnreadMessages.Request(userId: userId, channel_id: channel.id)
-                let response: NetworkAPI.User.GetUnreadMessages.Response = try await NetworkAPI.User.request(.getUnreadMessages(request))
-                return response
+                do{
+                    let response: NetworkAPI.User.GetUnreadMessages.Response = try await NetworkAPI.User.request(.getUnreadMessages(request))
+                    return response
+                }catch let WANetworkError.response(_, _, _, _, statusCode) where statusCode == 404{
+                    return nil
+                }catch{
+                    throw error
+                }
             }
             let statusResponse = { (userId: String) in
                 let request = NetworkAPI.User.GetStatus.Request(userId: userId)
@@ -67,7 +73,7 @@ struct ChannelListService: ChannelListServiceable{
             }()
             
             return (
-                try await UserDefault.user.map{ try await unreadMessageResponse($0.id) },
+                try await UserDefault.user.compactMap{ try await unreadMessageResponse($0.id) },
                 userResponse,
                 try await userResponse.map{ try await statusResponse($0.id) },
                 lastPostResponse

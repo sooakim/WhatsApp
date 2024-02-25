@@ -7,26 +7,29 @@
 
 import Foundation
 import SwiftUI
+import ComposableArchitecture
 
 struct HomeScreen: View{
+    let store: StoreOf<HomeReducer>
+    
     var body: some View{
         TabView{
-            ChannelListScreen()
+            ChannelListScreen(store: store.scope(state: \.tab1, action: \.tab1))
                 .tabItem {
                     Image(.Icon.tabStatus)
                 }
             
-            ChannelListScreen()
+            ChannelListScreen(store: store.scope(state: \.tab2, action: \.tab2))
                 .tabItem {
                     Image(.Icon.tabCall)
                 }
             
-            ChannelListScreen()
+            ChannelListScreen(store: store.scope(state: \.tab3, action: \.tab3))
                 .tabItem {
                     Image(.Icon.tabChat)
                 }
             
-            ChannelListScreen()
+            ChannelListScreen(store: store.scope(state: \.tab4, action: \.tab4))
                 .tabItem {
                     Image(.Icon.tabSetting)
                 }
@@ -35,5 +38,5 @@ struct HomeScreen: View{
 }
 
 #Preview{
-    HomeScreen()
+    HomeScreen(store: StoreEnvironment().home)
 }

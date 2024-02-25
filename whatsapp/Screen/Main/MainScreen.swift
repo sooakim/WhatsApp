@@ -17,18 +17,26 @@ struct MainScreen: View{
     // MARK: - Internal
     
     var body: some View{
-        WithViewStore(store.main, observe: { $0.isLoggedIn }){ viewStore in
-            if viewStore.state{
-                HomeScreen()
-            }else{
-                LoginScreen()
+        switch store.main.state{
+        case .loggedIn:
+            if let store = store.main.scope(state: \.loggedIn, action: \.loggedIn){
+                HomeScreen(store: store)
+                    .task{
+                        self.store.main.send(.appear)
+                    }
             }
-        }.task {
-            store.main.send(.appear)
+        case .loggedOut:
+            if let store = store.main.scope(state: \.loggedOut, action: \.loggedOut){
+                LoginScreen(store: store)
+                    .task{
+                        self.store.main.send(.appear)
+                    }
+            }
         }
     }
 }
 
 #Preview{
     MainScreen()
+        .environment(\.store, StoreEnvironment())
 }

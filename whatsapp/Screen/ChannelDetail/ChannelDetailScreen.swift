@@ -1,5 +1,5 @@
 //
-//  MessageDetailScreen.swift
+//  ChannelDetailScreen.swift
 //  whatsapp
 //
 //  Created by 김수아 on 1/14/24.
@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Kingfisher
+import ComposableArchitecture
 
 enum ItemType{
     case date
@@ -15,34 +16,23 @@ enum ItemType{
     case messageFromOther(Channel)
 }
 
-struct MessageDetailScreen: View{
-    var channel: Channel
-    
+struct ChannelDetailScreen: View{
+    let store: StoreOf<ChannelDetailReducer>
     @State var messageInput: String = ""
     
     var body: some View{
         VStack{
             // FIXME: hmm.. 리스트를 반전시켜서 scrollToTop동작도 반전 시키고 싶음..
             ScrollViewReader{ scrollViewReader in
-                List((0..<100)){ index in
+                List(store.state.items, id: \.id){ (item: ChannelDetailItem) in
                     ZStack{
-                        switch ({ () -> ItemType in
-                            let itemType: ItemType
-                            if index % 3 == 0{
-                                itemType = .date
-                            }else if index % 3 == 1{
-                                itemType = .messageFromUser(channel)
-                            }else{
-                                itemType = .messageFromOther(channel)
-                            }
-                            return itemType
-                        }()){
+                        switch item{
                         case .date:
                             MessageDateItem()
-                        case let .messageFromOther(channel):
+                        case let .postFromOther(post):
                             MessageFromOtherItem()
-                        case let .messageFromUser(channel):
-                            MessageFromUserItem()
+                        case let .postFromUser(post):
+                            MessageFromUserItem(post: post)
                         }
                     }
                     .scaleEffect(y: -1)
@@ -57,18 +47,23 @@ struct MessageDetailScreen: View{
             // FIXME: ToolbarItem(.keyboard){}로 넣고 싶었는데 SwiftUI에서 viewController를 어떻게 becomeFirstResponder로 만들어야할지 모르겠음
             InputAccessoryView(messageInput: $messageInput)
         }
-        .navigationTitle(channel.senderName)
+        .task{
+            store.send(.loadAll)
+        }
+        .navigationTitle(store.state.channel.senderName)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(.white, for: .navigationBar)
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {
-                KFImage.url(channel.senderProfileURL)
+                KFImage.url(store.state.channel.senderProfileURL)
                     .placeholder{
                         Circle().fill(Color.key)
                     }
                     .resizable()
                     .clipShape(Circle())
                     .overlay(alignment: .bottomTrailing) {
-                        if channel.isActiveUser {
+                        if store.state.channel.isActiveUser {
                             Circle()
                                 .fill(Color.green)
                                 .frame(width: Metrics.activeCircleSize, height: Metrics.activeCircleSize)
@@ -86,7 +81,7 @@ struct MessageDetailScreen: View{
     }
 }
 
-private extension MessageDetailScreen{
+private extension ChannelDetailScreen{
     enum Metrics{
         static let profileSize: CGFloat = 40
         static let activeCircleSize: CGFloat = 12
@@ -144,7 +139,7 @@ private extension InputAccessoryView{
 
 #Preview{
     NavigationStack{
-        MessageDetailScreen(channel: Channel(
+        ChannelDetailScreen(store: Store(initialState: .init(channel: Channel(
             id: "dng9iumsbfnk9d6wuhb5m4hoga",
             isActiveUser: true,
             senderId: "bmxkuy8r1bri5xwx64xhs1o8tw",
@@ -153,6 +148,8 @@ private extension InputAccessoryView{
             lastMessage: "alice2863 joined the channel.",
             lastMessageSentAt: Date(iso8601: "2024-02-11'T'06:05:58'Z'0000") ?? Date(),
             unreadMessageCount: 0
-        )).environment(\.store, StoreEnvironment())
+        )), reducer: {
+            ChannelDetailReducer()
+        }))
     }
 }

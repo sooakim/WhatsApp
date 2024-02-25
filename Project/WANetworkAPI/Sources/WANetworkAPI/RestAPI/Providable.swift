@@ -53,7 +53,7 @@ extension Providable where Self: TargetType{
     }
     
     public static func request<Response: Decodable>(_ targetType: Self) async throws -> Response{
-        let cancellable = MoyaCancellableWrapper<ThrowingContinuation>{ continuation in
+        let cancellable = MoyaCancellableWrapper<ThrowingContinuation<Response>>{ continuation in
             Self.moyaProvider.request(targetType, callbackQueue: responseQueue, progress: .none){ result in
                 do{
                     switch result{
@@ -64,7 +64,13 @@ extension Providable where Self: TargetType{
                                 UserDefault.user = nil
                                 Authorization._isLoggedIn.send(false)
                             }
-                        }else if let token = response.response?.headers["Token"]{
+                            
+                            let jsonData = response.data
+                            let decoded = try JSONDecoder.shared.decode(NetworkAPI.Common.Error.Response.self, from: jsonData)
+                            continuation.resume(throwing: WANetworkError.response(decoded.message, details: decoded.detailedError, id: decoded.id, requestId: decoded.requestId, statusCode: decoded.statusCode))
+                            return
+                        }
+                        if let token = response.response?.headers["Token"]{
                             Keychain["token"] = token
                             Authorization._isLoggedIn.send(true)
                         }

@@ -10,6 +10,7 @@ import Foundation
 extension ServiceDependency{
     static let mock = ServiceDependency(
         loginService: LoginService(),
-        channelListService: ChannelListServiceMock()
+        channelListService: ChannelListServiceMock(),
+        channelDetailService: ChannelDetailServiceMock()
     )
 }

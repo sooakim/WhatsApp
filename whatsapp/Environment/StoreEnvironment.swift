@@ -27,7 +27,10 @@ struct StoreEnvironment{
     let login = Store(initialState: LoginReducer.State()) {
         LoginReducer()
     }
-    let main = Store(initialState: MainReducer.State()) {
+    let main = Store(initialState: MainReducer.State.loggedOut(.init())) {
         MainReducer()
+    }
+    let home = Store(initialState: HomeReducer.State()) {
+        HomeReducer()
     }
 }

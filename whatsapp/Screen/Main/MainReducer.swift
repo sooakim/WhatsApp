@@ -12,35 +12,50 @@ import Combine
 
 @Reducer
 struct MainReducer{
-    struct State{
-        var isLoggedIn: Bool = false
+    @ObservableState
+    enum State{
+        case loggedIn(HomeReducer.State)
+        case loggedOut(LoginReducer.State)
     }
     
     enum Action{
         case appear
-        case login
-        case logout
+        case updateState(State)
+        
+        case loggedIn(HomeReducer.Action)
+        case loggedOut(LoginReducer.Action)
     }
     
     var body: some Reducer<State, Action>{
+        Scope(state: \.loggedIn, action: \.loggedIn){
+            HomeReducer()
+        }
+        Scope(state: \.loggedOut, action: \.loggedOut){
+            LoginReducer()
+        }
         Reduce{ state, action in
             switch action{
             case .appear:
-                state.isLoggedIn = NetworkAPI.User.isLoggedIn
+                switch NetworkAPI.User.isLoggedIn{
+                case true:
+                    state = .loggedIn(.init())
+                case false:
+                    state = .loggedOut(.init())
+                }
                 return .run{ send in
                     for await isLoggedIn in isLoggedIn(){
                         switch isLoggedIn{
                         case true:
-                            await send(.login)
+                            await send(.updateState(.loggedIn(.init())))
                         case false:
-                            await send(.logout)
+                            await send(.updateState(.loggedOut(.init())))
                         }
                     }
                 }
-            case .login:
-                state.isLoggedIn = true
-            case .logout:
-                state.isLoggedIn = false
+            case let .updateState(newState):
+                state = newState
+            default:
+                break
             }
             return .none
         }
@@ -53,7 +68,7 @@ struct MainReducer{
             } receiveValue: { (isLoggedIn: Bool) in
                 continuation.yield(with: .success(isLoggedIn))
             }
-
+            
             continuation.onTermination = { _ in
                 cancellable.cancel()
             }

@@ -9,20 +9,20 @@ import Foundation
 import SwiftUI
 
 struct MessageFromUserItem: View{
+    let post: PostInChannel
+    
     @State private var messageSize: CGSize = .zero
     
     var body: some View{
      
         let messageBody = {
-            Text(styleable: """
-            I plan to go to Norway, Tom said that you can tell about interesting places. I am very interested in the city of Stavanger. Have you been to this city?
-            """.lineHeight(17.05))
+            Text(styleable: post.message.lineHeight(17.05))
             .font(.custom(.regular, size: 14))
             .foregroundStyle(Color.white100)
         }
         let infoBody = {
             HStack(spacing: 5){
-                Text(styleable: "12:51".lineHeight(13.18))
+                Text(styleable: post.updatedAt.asRelativeDateTime().lineHeight(13.18))
                     .font(.custom(.light, size: 10))
                     .foregroundStyle(Color.white100)
                 Image(.Icon.messageReadSmall)
@@ -70,6 +70,7 @@ private extension MessageFromUserItem{
     }
 }
 
-#Preview{
-    MessageFromUserItem()
-}
+//TODO: implement later
+//#Preview{
+//    MessageFromUserItem()
+//}

@@ -14,10 +14,15 @@ import Combine
 struct ChannelListReducer{
     @Dependency(\.service) var service
     
+    @ObservableState
     struct State{
         var channelPage: Int = 0
-        var channels: [Channel] = []
-        var channelIndexesByUserId: [String: [Int]] = [:]
+        var channelDetails: IdentifiedArrayOf<ChannelDetailReducer.State> = []
+       
+        // MARK: - Navigation
+        @Presents
+        var alert: AlertState<Action.Alert>?
+        var path = StackState<Path.State>()
     }
     
     enum Action{
@@ -34,6 +39,15 @@ struct ChannelListReducer{
         case insertChannels([Channel])
         case updateSenderStatus(isActiveUser: Bool, userId: String)
         case error(Error)
+        
+        // MARK: - Navigation
+        case path(StackAction<Path.State, Path.Action>)
+        case channelDetails(IdentifiedActionOf<ChannelDetailReducer>)
+        case alert(PresentationAction<Alert>)
+        
+        enum Alert: Equatable {
+          
+        }
     }
     
     var body: some Reducer<State, Action> {
@@ -98,33 +112,37 @@ struct ChannelListReducer{
             case let .updateChannelPage(page):
                 state.channelPage = page
             case let .updateChannels(channels):
-                state.channels = channels
-                
-                //indexing...
-                var channelIndexesByUserId: [String: [Int]] = [:]
-                for (index, channel) in channels.enumerated(){
-                    guard let senderId = channel.senderId else{ continue }
-                    var channels = channelIndexesByUserId[senderId, default: []]
-                    channels.append(index)
-                    channelIndexesByUserId[senderId] = channels
-                }
-                state.channelIndexesByUserId = channelIndexesByUserId
+                state.channelDetails = IdentifiedArray(uniqueElements: channels.map{ ChannelDetailReducer.State(channel: $0) })
             case let .insertChannels(channels):
-                let newChannels = state.channels + channels
-                return .send(.updateChannels(newChannels))
+                state.channelDetails += IdentifiedArray(uniqueElements: channels.map{ ChannelDetailReducer.State(channel: $0) })
             case let .updateSenderStatus(isActiveUser, userId):
-                let targetIndexes = Set(state.channelIndexesByUserId[userId, default: []])
-                
-                state.channels = state.channels.enumerated().map { index, channel in
-                    guard targetIndexes.contains(index) else{ return channel }
-                    var newChannel = channel
+                state.channelDetails = IdentifiedArray(uniqueElements: state.channelDetails.map { channelDetail in
+                    guard channelDetail.channel.senderId == userId else{ return channelDetail }
+                    var newChannel = channelDetail.channel
                     newChannel.isActiveUser = isActiveUser
-                    return newChannel
+                    return ChannelDetailReducer.State(channel: newChannel)
+                })
+            case let .error(error):
+                if let error = error as? WANetworkError, case let .response(message, _, _, _, _) = error{
+                    state.alert = AlertState{
+                        TextState(message)
+                    }
                 }
-            case .error:
+            case .alert:
+                state.alert = nil
+            case .channelDetails:
+                break
+            case .path:
                 break
             }
             return .none
+        }
+        .ifLet(\.$alert, action: \.alert)
+        .forEach(\.path, action: \.path){
+            Path()
+        }
+        .forEach(\.channelDetails, action: \.channelDetails){
+            ChannelDetailReducer()
         }
     }
     
@@ -132,5 +150,23 @@ struct ChannelListReducer{
         case eventListener
         case fetch
         case loadMore
+    }
+    
+    @Reducer
+    struct Path{
+        @ObservableState
+        enum State{
+            case detail(ChannelDetailReducer.State)
+        }
+        
+        enum Action{
+            case detail(ChannelDetailReducer.Action)
+        }
+        
+        var body: some Reducer<State, Action>{
+            Scope(state: \.detail, action: \.detail){
+                ChannelDetailReducer()
+            }
+        }
     }
 }
