@@ -86,8 +86,7 @@ struct ChannelDetailReducer{
                 state.posts = posts
                 state.prevPostId = prevPostId
                 
-                state.items = state.posts.map{ 
-                    if NetworkAPI.User
+                state.items = state.posts.map{
                     .postFromUser($0)
                 }
             case let .insertPosts(posts, prevPostId):

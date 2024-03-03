@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 김수아 on 2/4/24.
 //
@@ -11,17 +11,19 @@ extension Collection{
     public func asyncMap<R>(
         _ operation: @escaping (Element) async throws -> R
     ) async rethrows -> [R] {
-        try await withThrowingTaskGroup(of: R.self, body: { group in
-            for element in self {
+        try await withThrowingTaskGroup(of: (Int, R).self, body: { group in
+            for (index, element) in self.enumerated() {
                 group.addTask {
-                    try await operation(element)
+                    (index, try await operation(element))
                 }
             }
-            var results = [R?]()
+            var results = [(Int, R)]()
             for try await result in group{
                 results.append(result)
             }
-            return results.compactMap{ $0 }
+            return results.sorted { lhs, rhs in
+                lhs.0 < rhs.0
+            }.map{ $0.1 }
         })
     }
 }
